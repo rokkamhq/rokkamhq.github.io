@@ -1,0 +1,132 @@
+{
+  "schema_version": "1.0",
+  "category": "phone",
+  "verified": false,
+  "brand": { "name": "Samsung", "slug": "samsung", "sort": 2, "active": true },
+  "models": [
+    {
+      "name": "Galaxy S21 FE 5G",
+      "slug": "samsung-galaxy-s21-fe",
+      "launch_year": 2022,
+      "series": "Galaxy S",
+      "discontinued": true,
+      "aliases": ["SM-G990"],
+      "image_ref": "press:samsung/galaxy-s21-fe",
+      "variant_mode": "fixed",
+      "variants": [
+        { "label": "128GB", "attrs": { "ram_gb": 8, "storage_gb": 128 }, "launch_price_inr": null, "base_price_inr": null },
+        { "label": "256GB", "attrs": { "ram_gb": 8, "storage_gb": 256 }, "launch_price_inr": null, "base_price_inr": null }
+      ]
+    },
+    {
+      "name": "Galaxy S22 5G",
+      "slug": "samsung-galaxy-s22",
+      "launch_year": 2022,
+      "series": "Galaxy S",
+      "discontinued": true,
+      "aliases": ["SM-S901"],
+      "image_ref": "press:samsung/galaxy-s22",
+      "variant_mode": "fixed",
+      "variants": [
+        { "label": "128GB", "attrs": { "ram_gb": 8, "storage_gb": 128 }, "launch_price_inr": 72999, "base_price_inr": null },
+        { "label": "256GB", "attrs": { "ram_gb": 8, "storage_gb": 256 }, "launch_price_inr": null, "base_price_inr": null }
+      ]
+    },
+    {
+      "name": "Galaxy S23",
+      "slug": "samsung-galaxy-s23",
+      "launch_year": 2023,
+      "series": "Galaxy S",
+      "discontinued": false,
+      "aliases": ["SM-S911"],
+      "image_ref": "press:samsung/galaxy-s23",
+      "variant_mode": "fixed",
+      "variants": [
+        { "label": "128GB", "attrs": { "ram_gb": 8, "storage_gb": 128 }, "launch_price_inr": 74999, "base_price_inr": null },
+        { "label": "256GB", "attrs": { "ram_gb": 8, "storage_gb": 256 }, "launch_price_inr": 79999, "base_price_inr": null }
+      ]
+    },
+    {
+      "name": "Galaxy S23 Ultra",
+      "slug": "samsung-galaxy-s23-ultra",
+      "launch_year": 2023,
+      "series": "Galaxy S",
+      "discontinued": false,
+      "aliases": ["SM-S918"],
+      "image_ref": "press:samsung/galaxy-s23-ultra",
+      "variant_mode": "fixed",
+      "variants": [
+        { "label": "256GB", "attrs": { "ram_gb": 12, "storage_gb": 256 }, "launch_price_inr": 124999, "base_price_inr": null },
+        { "label": "512GB", "attrs": { "ram_gb": 12, "storage_gb": 512 }, "launch_price_inr": null, "base_price_inr": null }
+      ]
+    },
+    {
+      "name": "Galaxy S24",
+      "slug": "samsung-galaxy-s24",
+      "launch_year": 2024,
+      "series": "Galaxy S",
+      "discontinued": false,
+      "aliases": ["SM-S921"],
+      "image_ref": "press:samsung/galaxy-s24",
+      "variant_mode": "fixed",
+      "variants": [
+        { "label": "128GB", "attrs": { "ram_gb": 8, "storage_gb": 128 }, "launch_price_inr": 74999, "base_price_inr": null },
+        { "label": "256GB", "attrs": { "ram_gb": 8, "storage_gb": 256 }, "launch_price_inr": 79999, "base_price_inr": null }
+      ]
+    },
+    {
+      "name": "Galaxy S24 Ultra",
+      "slug": "samsung-galaxy-s24-ultra",
+      "launch_year": 2024,
+      "series": "Galaxy S",
+      "discontinued": false,
+      "aliases": ["SM-S928"],
+      "image_ref": "press:samsung/galaxy-s24-ultra",
+      "variant_mode": "fixed",
+      "variants": [
+        { "label": "256GB", "attrs": { "ram_gb": 12, "storage_gb": 256 }, "launch_price_inr": 129999, "base_price_inr": null },
+        { "label": "512GB", "attrs": { "ram_gb": 12, "storage_gb": 512 }, "launch_price_inr": 139999, "base_price_inr": null }
+      ]
+    },
+    {
+      "name": "Galaxy A54 5G",
+      "slug": "samsung-galaxy-a54",
+      "launch_year": 2023,
+      "series": "Galaxy A",
+      "discontinued": false,
+      "aliases": ["SM-A546"],
+      "image_ref": "press:samsung/galaxy-a54",
+      "variant_mode": "fixed",
+      "variants": [
+        { "label": "128GB", "attrs": { "ram_gb": 8, "storage_gb": 128 }, "launch_price_inr": 38999, "base_price_inr": null },
+        { "label": "256GB", "attrs": { "ram_gb": 8, "storage_gb": 256 }, "launch_price_inr": null, "base_price_inr": null }
+      ]
+    },
+    {
+      "name": "Galaxy A34 5G",
+      "slug": "samsung-galaxy-a34",
+      "launch_year": 2023,
+      "series": "Galaxy A",
+      "discontinued": false,
+      "aliases": ["SM-A346"],
+      "image_ref": "press:samsung/galaxy-a34",
+      "variant_mode": "fixed",
+      "variants": [
+        { "label": "128GB", "attrs": { "ram_gb": 8, "storage_gb": 128 }, "launch_price_inr": null, "base_price_inr": null }
+      ]
+    },
+    {
+      "name": "Galaxy M34 5G",
+      "slug": "samsung-galaxy-m34",
+      "launch_year": 2023,
+      "series": "Galaxy M",
+      "discontinued": false,
+      "aliases": ["SM-M346"],
+      "image_ref": "press:samsung/galaxy-m34",
+      "variant_mode": "fixed",
+      "variants": [
+        { "label": "128GB", "attrs": { "ram_gb": 6, "storage_gb": 128 }, "launch_price_inr": null, "base_price_inr": null }
+      ]
+    }
+  ]
+}

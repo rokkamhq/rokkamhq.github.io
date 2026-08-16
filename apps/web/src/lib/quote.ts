@@ -1,4 +1,4 @@
-import type { Answers, DeductionMatrix, LedgerLine, QuoteResult } from "./types";
+import type { Answers, ComposedPriceEntry, DeductionMatrix, LedgerLine, QuoteResult } from "./types";
 
 export const QUOTE_LOCK_DAYS = 7;
 
@@ -53,6 +53,19 @@ export function computeQuote(matrix: DeductionMatrix, baseInr: number, answers: 
     finalPriceInr: floored ? floor : raw,
     flooredAt: floored ? floor : null,
   };
+}
+
+/**
+ * Effective base for a composed-mode device (laptops): base_config buyback
+ * plus the INR modifier of each selected axis label.
+ */
+export function composedBase(entry: ComposedPriceEntry, selection: Record<string, string>): number {
+  let total = entry.base;
+  for (const [axis, options] of Object.entries(entry.axes)) {
+    const chosen = selection[axis];
+    if (chosen !== undefined && options[chosen] !== undefined) total += options[chosen];
+  }
+  return total;
 }
 
 /** Demo quote code, e.g. RKM-7F3KQ2 (server issues real codes in Phase 2). */

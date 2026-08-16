@@ -2,16 +2,17 @@
 // TE/UR translation is a dedicated pass — never inline-guess translations.
 
 const en: Record<string, string> = {
-  "nav.sell": "Sell your phone",
+  "nav.sell": "Sell your device",
   "nav.how": "How it works",
   "nav.trust": "Why Rokkam",
   "nav.business": "For business",
   "nav.cta": "Get price",
 
   "hero.eyebrow": "Hyderabad & Secunderabad only — that's the point.",
-  "hero.title": "Sell your phone. Cash before the agent leaves.",
+  "hero.title": "Sell your phone or laptop. Cash before the agent leaves.",
   "hero.sub":
     "60-minute pickup in Hitec City, Gachibowli & central Hyderabad. Certified data wipe. The price we quote is the price we pay.",
+  "hero.wa": "or get a quote on WhatsApp",
   "hero.cta": "Get my price",
   "hero.cta2": "How it works",
   "hero.badge.pickup": "60-min pickup · Zone A",
@@ -34,7 +35,7 @@ const en: Record<string, string> = {
 
   "how.title": "Sold in four steps",
   "how.step1.title": "Answer honestly",
-  "how.step1.body": "Pick your phone, answer a 2-minute condition check. Watch the price build line by line — no surprises later.",
+  "how.step1.body": "Pick your device, answer a 2-minute condition check. Watch the price build line by line — no surprises later.",
   "how.step2.title": "Lock your price",
   "how.step2.body": "Your quote is locked for 7 days. Book a pickup slot that suits you.",
   "how.step3.title": "Agent verifies at your door",
@@ -59,13 +60,17 @@ const en: Record<string, string> = {
   "faq.q4": "Which areas do you cover?",
   "faq.a4": "Hyderabad and Secunderabad (GHMC) only. Zone A gets 60–90 minute pickup; the rest of GHMC same-day or next-day.",
 
-  "sell.title": "Which phone are you selling?",
-  "sell.sub": "Smartphones for now. Laptops and cameras are coming.",
+  "sell.title": "What are you selling?",
+  "sell.sub": "Mobiles and laptops today. Cameras are next.",
+  "sell.pickCategory": "Pick a category",
   "sell.pickBrand": "Pick your brand",
   "sell.pickModel": "Pick your model",
   "sell.upto": "Get up to",
   "sell.pickVariant": "Which storage do you have?",
   "sell.variantHint": "Check Settings → General → About if unsure.",
+  "sell.pickConfig": "Which configuration is yours?",
+  "sell.configHint": "Pick what's inside your machine — the price adjusts as you choose.",
+  "sell.cameras.soon": "Cameras — coming soon",
 
   "wizard.ledgerTitle": "Your price, live",
   "wizard.base": "Base price",

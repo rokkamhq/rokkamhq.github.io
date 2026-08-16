@@ -1,0 +1,89 @@
+{
+  "schema_version": "1.0",
+  "category": "phone",
+  "verified": false,
+  "brand": { "name": "Xiaomi", "slug": "xiaomi", "sort": 4, "active": true },
+  "models": [
+    {
+      "name": "Redmi Note 11",
+      "slug": "xiaomi-redmi-note-11",
+      "launch_year": 2022,
+      "series": "Redmi Note",
+      "discontinued": true,
+      "aliases": ["2201117TI"],
+      "image_ref": "press:xiaomi/redmi-note-11",
+      "variant_mode": "fixed",
+      "variants": [
+        { "label": "64GB", "attrs": { "ram_gb": 4, "storage_gb": 64 }, "launch_price_inr": 13499, "base_price_inr": null },
+        { "label": "128GB", "attrs": { "ram_gb": 6, "storage_gb": 128 }, "launch_price_inr": null, "base_price_inr": null }
+      ]
+    },
+    {
+      "name": "Redmi Note 12 5G",
+      "slug": "xiaomi-redmi-note-12",
+      "launch_year": 2023,
+      "series": "Redmi Note",
+      "discontinued": false,
+      "aliases": ["22111317I"],
+      "image_ref": "press:xiaomi/redmi-note-12",
+      "variant_mode": "fixed",
+      "variants": [
+        { "label": "128GB", "attrs": { "ram_gb": 6, "storage_gb": 128 }, "launch_price_inr": 17999, "base_price_inr": null },
+        { "label": "256GB", "attrs": { "ram_gb": 8, "storage_gb": 256 }, "launch_price_inr": null, "base_price_inr": null }
+      ]
+    },
+    {
+      "name": "Redmi Note 13 Pro 5G",
+      "slug": "xiaomi-redmi-note-13-pro",
+      "launch_year": 2024,
+      "series": "Redmi Note",
+      "discontinued": false,
+      "aliases": ["2312DRA50I"],
+      "image_ref": "press:xiaomi/redmi-note-13-pro",
+      "variant_mode": "fixed",
+      "variants": [
+        { "label": "128GB", "attrs": { "ram_gb": 8, "storage_gb": 128 }, "launch_price_inr": 25999, "base_price_inr": null },
+        { "label": "256GB", "attrs": { "ram_gb": 12, "storage_gb": 256 }, "launch_price_inr": null, "base_price_inr": null }
+      ]
+    },
+    {
+      "name": "Redmi 12 5G",
+      "slug": "xiaomi-redmi-12",
+      "launch_year": 2023,
+      "series": "Redmi",
+      "discontinued": false,
+      "aliases": ["23076RN4BI"],
+      "image_ref": "press:xiaomi/redmi-12",
+      "variant_mode": "fixed",
+      "variants": [
+        { "label": "128GB", "attrs": { "ram_gb": 6, "storage_gb": 128 }, "launch_price_inr": null, "base_price_inr": null }
+      ]
+    },
+    {
+      "name": "Xiaomi 13 Pro",
+      "slug": "xiaomi-13-pro",
+      "launch_year": 2023,
+      "series": "Xiaomi",
+      "discontinued": true,
+      "aliases": ["2210132G"],
+      "image_ref": "press:xiaomi/13-pro",
+      "variant_mode": "fixed",
+      "variants": [
+        { "label": "256GB", "attrs": { "ram_gb": 12, "storage_gb": 256 }, "launch_price_inr": 79999, "base_price_inr": null }
+      ]
+    },
+    {
+      "name": "Xiaomi 14",
+      "slug": "xiaomi-14",
+      "launch_year": 2024,
+      "series": "Xiaomi",
+      "discontinued": false,
+      "aliases": ["23127PN0CI"],
+      "image_ref": "press:xiaomi/14",
+      "variant_mode": "fixed",
+      "variants": [
+        { "label": "512GB", "attrs": { "ram_gb": 12, "storage_gb": 512 }, "launch_price_inr": 69999, "base_price_inr": null }
+      ]
+    }
+  ]
+}

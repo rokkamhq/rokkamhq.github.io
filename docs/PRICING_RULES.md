@@ -1,7 +1,8 @@
-# Pricing rules — smartphone v1 (DEMO values)
+# Pricing rules — smartphone + laptop v1 (DEMO values)
 
-Human-readable mirror of `seeds/pricing/phone_deductions.json`. If the two differ,
-the seed file wins; update this doc in the same commit.
+Human-readable mirror of `seeds/pricing/phone_deductions.json` and
+`seeds/pricing/laptop_deductions.json`. If they differ, the seed files win;
+update this doc in the same commit.
 
 **Formula** (`CLAUDE.md` §6): `final = base_price(variant) − Σ deductions + Σ bonuses`,
 floored at `max(base × 5%, ₹300)` scrap value. Bonuses are stored as negative
@@ -51,8 +52,30 @@ deductions. `pct` deductions are computed on the **base** price, not the running
 | | Bill only | | **+₹200** |
 | | No bill | | — |
 
+## Laptop deduction matrix (composed mode)
+
+Laptops resolve their base price first: `base_config` buyback + one INR modifier
+per axis (CPU / RAM / storage / GPU) from `demo_base_prices.laptop.json` — every
+axis has exactly one ₹0 "base" label (unit-tested invariant). Then deductions apply:
+
+| Section | Question | Worst answers | Impact |
+|---|---|---|---|
+| Ownership | Can sign out of iCloud/Microsoft/BIOS? | No — locked | **deal killed** |
+| Power & boot | Boots normally? | Hangs −20% · dead −60% |
+| Display | Condition | Spots/lines −18% · cracked −30% |
+| Keyboard/trackpad | Working fully? | Some keys −10% · mostly dead −18% |
+| Body & hinge | Condition | Dents −10% · hinge broken −18% |
+| Battery | Charge held | Fast drain −8% · plugged-in only −15% |
+| Ports | All working? | Some dead −8% |
+| Storage health | Warnings/slowness? | Issues −10% |
+| OS licence | Genuine & activated? | No −₹1,500 flat |
+| Charger | Included? | Third-party −₹500 · none −₹1,500 |
+| Bill | Purchase bill? | Bill+warranty **+3%** · bill only **+₹300** |
+
 ## Base prices
 
-Demo base prices per variant: `seeds/pricing/demo_base_prices.phone.json`.
-Seeds never carry buyback prices (`base_price_inr` stays null per SEED_SCHEMA);
-the demo file stands in for the `base_prices` table until the admin dashboard exists.
+Demo base prices: `seeds/pricing/demo_base_prices.phone.json` (per variant) and
+`seeds/pricing/demo_base_prices.laptop.json` (base_config + axis modifiers).
+Seeds never carry buyback prices (`base_price_inr` / `modifier_inr` stay null per
+SEED_SCHEMA); the demo files stand in for the `base_prices` and `variant_axes`
+tables until the admin dashboard exists.

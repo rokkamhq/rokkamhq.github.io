@@ -1,0 +1,129 @@
+{
+  "schema_version": "1.0",
+  "category": "laptop",
+  "verified": false,
+  "brand": { "name": "Apple", "slug": "apple", "sort": 1, "active": true },
+  "models": [
+    {
+      "name": "MacBook Air M1",
+      "slug": "apple-macbook-air-m1",
+      "launch_year": 2020,
+      "series": "MacBook Air",
+      "discontinued": true,
+      "aliases": ["A2337"],
+      "image_ref": "press:apple/macbook-air-m1",
+      "variant_mode": "composed",
+      "notes": "Check Activation Lock removal before purchase — kills the deal if seller cannot sign out of iCloud.",
+      "base_config": {
+        "description": "Apple M1 / 8GB / 256GB SSD / 13.3\"",
+        "launch_price_inr": 92900
+      },
+      "variant_axes": {
+        "ram_gb": [
+          { "label": "8", "modifier_inr": 0 },
+          { "label": "16", "modifier_inr": null }
+        ],
+        "storage": [
+          { "label": "256GB SSD", "modifier_inr": 0 },
+          { "label": "512GB SSD", "modifier_inr": null }
+        ]
+      }
+    },
+    {
+      "name": "MacBook Air M2",
+      "slug": "apple-macbook-air-m2",
+      "launch_year": 2022,
+      "series": "MacBook Air",
+      "discontinued": false,
+      "aliases": ["A2681"],
+      "image_ref": "press:apple/macbook-air-m2",
+      "variant_mode": "composed",
+      "base_config": {
+        "description": "Apple M2 / 8GB / 256GB SSD / 13.6\"",
+        "launch_price_inr": 119900
+      },
+      "variant_axes": {
+        "ram_gb": [
+          { "label": "8", "modifier_inr": 0 },
+          { "label": "16", "modifier_inr": null }
+        ],
+        "storage": [
+          { "label": "256GB SSD", "modifier_inr": 0 },
+          { "label": "512GB SSD", "modifier_inr": null }
+        ]
+      }
+    },
+    {
+      "name": "MacBook Air M3",
+      "slug": "apple-macbook-air-m3",
+      "launch_year": 2024,
+      "series": "MacBook Air",
+      "discontinued": false,
+      "aliases": ["A3113"],
+      "image_ref": "press:apple/macbook-air-m3",
+      "variant_mode": "composed",
+      "base_config": {
+        "description": "Apple M3 / 8GB / 256GB SSD / 13.6\"",
+        "launch_price_inr": 114900
+      },
+      "variant_axes": {
+        "ram_gb": [
+          { "label": "8", "modifier_inr": 0 },
+          { "label": "16", "modifier_inr": null }
+        ],
+        "storage": [
+          { "label": "256GB SSD", "modifier_inr": 0 },
+          { "label": "512GB SSD", "modifier_inr": null }
+        ]
+      }
+    },
+    {
+      "name": "MacBook Pro 14 (M1 Pro)",
+      "slug": "apple-macbook-pro-14-m1-pro",
+      "launch_year": 2021,
+      "series": "MacBook Pro",
+      "discontinued": true,
+      "aliases": ["A2442"],
+      "image_ref": "press:apple/macbook-pro-14-m1-pro",
+      "variant_mode": "composed",
+      "base_config": {
+        "description": "Apple M1 Pro / 16GB / 512GB SSD / 14.2\"",
+        "launch_price_inr": 194900
+      },
+      "variant_axes": {
+        "ram_gb": [
+          { "label": "16", "modifier_inr": 0 },
+          { "label": "32", "modifier_inr": null }
+        ],
+        "storage": [
+          { "label": "512GB SSD", "modifier_inr": 0 },
+          { "label": "1TB SSD", "modifier_inr": null }
+        ]
+      }
+    },
+    {
+      "name": "MacBook Pro 14 (M3)",
+      "slug": "apple-macbook-pro-14-m3",
+      "launch_year": 2023,
+      "series": "MacBook Pro",
+      "discontinued": false,
+      "aliases": ["A2918"],
+      "image_ref": "press:apple/macbook-pro-14-m3",
+      "variant_mode": "composed",
+      "base_config": {
+        "description": "Apple M3 / 8GB / 512GB SSD / 14.2\"",
+        "launch_price_inr": 169900
+      },
+      "variant_axes": {
+        "ram_gb": [
+          { "label": "8", "modifier_inr": 0 },
+          { "label": "16", "modifier_inr": null }
+        ],
+        "storage": [
+          { "label": "512GB SSD", "modifier_inr": 0 },
+          { "label": "1TB SSD", "modifier_inr": null }
+        ]
+      }
+    }
+  ]
+}

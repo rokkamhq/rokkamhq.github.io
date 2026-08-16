@@ -11,7 +11,7 @@ const target = path.resolve(here, "..", "src", "data", "seeds");
 
 rmSync(target, { recursive: true, force: true });
 mkdirSync(target, { recursive: true });
-for (const dir of ["phones", "pricing"]) {
+for (const dir of ["phones", "laptops", "pricing"]) {
   cpSync(path.join(repoSeeds, dir), path.join(target, dir), { recursive: true });
 }
 cpSync(path.join(repoSeeds, "zones.json"), path.join(target, "zones.json"));

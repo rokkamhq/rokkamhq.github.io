@@ -7,6 +7,11 @@ export interface SeedVariant {
   base_price_inr: number | null;
 }
 
+export interface VariantAxisOption {
+  label: string;
+  modifier_inr: number | null;
+}
+
 export interface SeedModel {
   name: string;
   slug: string;
@@ -17,6 +22,8 @@ export interface SeedModel {
   image_ref: string;
   variant_mode: "fixed" | "composed";
   variants?: SeedVariant[];
+  base_config?: { description: string; launch_price_inr: number | null };
+  variant_axes?: Record<string, VariantAxisOption[]>;
   notes?: string;
 }
 
@@ -71,6 +78,21 @@ export interface BasePriceSeed {
   currency: string;
   effective_from: string;
   prices: Record<string, Record<string, number>>;
+}
+
+/** Composed-mode pricing (laptops): buyback for base_config + per-axis label modifiers. */
+export interface ComposedPriceEntry {
+  base: number;
+  axes: Record<string, Record<string, number>>;
+}
+
+export interface ComposedPriceSeed {
+  schema_version: string;
+  category: string;
+  status: string;
+  currency: string;
+  effective_from: string;
+  prices: Record<string, ComposedPriceEntry>;
 }
 
 export interface Zone {

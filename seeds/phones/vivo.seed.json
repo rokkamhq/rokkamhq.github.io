@@ -1,0 +1,89 @@
+{
+  "schema_version": "1.0",
+  "category": "phone",
+  "verified": false,
+  "brand": { "name": "Vivo", "slug": "vivo", "sort": 6, "active": true },
+  "models": [
+    {
+      "name": "V27 5G",
+      "slug": "vivo-v27",
+      "launch_year": 2023,
+      "series": "V",
+      "discontinued": true,
+      "aliases": ["V2231"],
+      "image_ref": "press:vivo/v27",
+      "variant_mode": "fixed",
+      "variants": [
+        { "label": "128GB", "attrs": { "ram_gb": 8, "storage_gb": 128 }, "launch_price_inr": 32999, "base_price_inr": null },
+        { "label": "256GB", "attrs": { "ram_gb": 8, "storage_gb": 256 }, "launch_price_inr": null, "base_price_inr": null }
+      ]
+    },
+    {
+      "name": "V29 5G",
+      "slug": "vivo-v29",
+      "launch_year": 2023,
+      "series": "V",
+      "discontinued": false,
+      "aliases": ["V2250"],
+      "image_ref": "press:vivo/v29",
+      "variant_mode": "fixed",
+      "variants": [
+        { "label": "128GB", "attrs": { "ram_gb": 8, "storage_gb": 128 }, "launch_price_inr": 32999, "base_price_inr": null },
+        { "label": "256GB", "attrs": { "ram_gb": 8, "storage_gb": 256 }, "launch_price_inr": null, "base_price_inr": null }
+      ]
+    },
+    {
+      "name": "V30 5G",
+      "slug": "vivo-v30",
+      "launch_year": 2024,
+      "series": "V",
+      "discontinued": false,
+      "aliases": ["V2318"],
+      "image_ref": "press:vivo/v30",
+      "variant_mode": "fixed",
+      "variants": [
+        { "label": "128GB", "attrs": { "ram_gb": 8, "storage_gb": 128 }, "launch_price_inr": 33999, "base_price_inr": null },
+        { "label": "256GB", "attrs": { "ram_gb": 8, "storage_gb": 256 }, "launch_price_inr": null, "base_price_inr": null }
+      ]
+    },
+    {
+      "name": "X90 5G",
+      "slug": "vivo-x90",
+      "launch_year": 2023,
+      "series": "X",
+      "discontinued": true,
+      "aliases": ["V2241"],
+      "image_ref": "press:vivo/x90",
+      "variant_mode": "fixed",
+      "variants": [
+        { "label": "256GB", "attrs": { "ram_gb": 8, "storage_gb": 256 }, "launch_price_inr": 59999, "base_price_inr": null }
+      ]
+    },
+    {
+      "name": "X100 5G",
+      "slug": "vivo-x100",
+      "launch_year": 2024,
+      "series": "X",
+      "discontinued": false,
+      "aliases": ["V2308"],
+      "image_ref": "press:vivo/x100",
+      "variant_mode": "fixed",
+      "variants": [
+        { "label": "256GB", "attrs": { "ram_gb": 12, "storage_gb": 256 }, "launch_price_inr": 63999, "base_price_inr": null }
+      ]
+    },
+    {
+      "name": "T2 5G",
+      "slug": "vivo-t2",
+      "launch_year": 2023,
+      "series": "T",
+      "discontinued": false,
+      "aliases": ["V2221"],
+      "image_ref": "press:vivo/t2",
+      "variant_mode": "fixed",
+      "variants": [
+        { "label": "128GB", "attrs": { "ram_gb": 6, "storage_gb": 128 }, "launch_price_inr": 18999, "base_price_inr": null }
+      ]
+    }
+  ]
+}

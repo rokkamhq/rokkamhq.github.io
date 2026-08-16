@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { t } from "@/lib/copy";
 import { ZONES } from "@/lib/catalog";
+import { whatsappLink } from "@/lib/site";
 
 const heroLedger = [
   { label: "iPhone 13 · 128GB — base", amount: "₹24,500", kind: "base" },
@@ -37,6 +38,16 @@ export default function Home() {
                 {t("hero.cta2")}
               </Link>
             </div>
+            {whatsappLink("Hi Rokkam! I want a price for my device.") && (
+              <a
+                href={whatsappLink("Hi Rokkam! I want a price for my device.")!}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-rokkam-deep underline-offset-4 hover:underline"
+              >
+                💬 {t("hero.wa")} →
+              </a>
+            )}
             <ul className="mt-10 flex flex-wrap gap-x-6 gap-y-2 text-sm font-medium text-slate">
               {[t("hero.badge.pickup"), t("hero.badge.upi"), t("hero.badge.wipe")].map((badge) => (
                 <li key={badge} className="flex items-center gap-2">

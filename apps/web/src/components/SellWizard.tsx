@@ -2,49 +2,95 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import { computeQuote, demoQuoteCode, QUOTE_LOCK_DAYS } from "@/lib/quote";
+import { composedBase, computeQuote, demoQuoteCode, QUOTE_LOCK_DAYS } from "@/lib/quote";
 import { zoneForPincode, type ZoneMatch } from "@/lib/zones";
 import { whatsappLink } from "@/lib/site";
 import { formatInr } from "@/lib/format";
 import { t } from "@/lib/copy";
 import { LedgerReceipt } from "./LedgerReceipt";
-import type { Answers, DeductionMatrix, SeedModel } from "@/lib/types";
+import type { Answers, ComposedPriceEntry, DeductionMatrix, QuoteResult, SeedModel } from "@/lib/types";
 
-type Phase = "variant" | "questions" | "result";
+type Phase = "variant" | "config" | "questions" | "result";
+
+const AXIS_LABELS: Record<string, string> = {
+  cpu: "Processor",
+  ram_gb: "RAM",
+  storage: "Storage",
+  gpu: "Graphics",
+};
+
+function axisOptionLabel(axis: string, label: string): string {
+  return axis === "ram_gb" ? `${label} GB` : label;
+}
 
 export function SellWizard({
+  category,
   brandName,
   model,
-  prices,
+  fixedPrices,
+  composedEntry,
   matrix,
 }: {
+  category: "phones" | "laptops";
   brandName: string;
   model: SeedModel;
-  prices: Record<string, number>;
+  fixedPrices?: Record<string, number>;
+  composedEntry?: ComposedPriceEntry;
   matrix: DeductionMatrix;
 }) {
+  // Fixed mode (phones): variant labels that carry a demo price.
   const variantLabels = (model.variants ?? [])
     .map((v) => v.label)
-    .filter((label) => prices[label] !== undefined);
+    .filter((label) => fixedPrices?.[label] !== undefined);
+
+  // Composed mode (laptops): axes in seed order, options limited to priced labels.
+  const axes = useMemo(() => {
+    if (!composedEntry || !model.variant_axes) return [];
+    return Object.entries(model.variant_axes)
+      .map(([axis, options]) => ({
+        axis,
+        labels: options.map((o) => o.label).filter((l) => composedEntry.axes[axis]?.[l] !== undefined),
+      }))
+      .filter((a) => a.labels.length > 0);
+  }, [composedEntry, model.variant_axes]);
 
   const [variantLabel, setVariantLabel] = useState<string | null>(
     variantLabels.length === 1 ? variantLabels[0] : null,
   );
-  const [phase, setPhase] = useState<Phase>(variantLabels.length === 1 ? "questions" : "variant");
+  // Default selection = the base config (modifier 0 per axis).
+  const [axisSelection, setAxisSelection] = useState<Record<string, string>>(() => {
+    const selection: Record<string, string> = {};
+    for (const { axis, labels } of axes) {
+      selection[axis] =
+        labels.find((l) => composedEntry?.axes[axis]?.[l] === 0) ?? labels[0];
+    }
+    return selection;
+  });
+  const [phase, setPhase] = useState<Phase>(() => {
+    if (composedEntry) return axes.length > 0 ? "config" : "questions";
+    return variantLabels.length === 1 ? "questions" : "variant";
+  });
   const [stepIndex, setStepIndex] = useState(0);
   const [answers, setAnswers] = useState<Answers>({});
   const [ledgerOpen, setLedgerOpen] = useState(false);
 
-  const basePrice = variantLabel !== null ? prices[variantLabel] : null;
+  const basePrice = composedEntry
+    ? composedBase(composedEntry, axisSelection)
+    : variantLabel !== null
+      ? (fixedPrices?.[variantLabel] ?? null)
+      : null;
   const quote = useMemo(
     () => (basePrice !== null ? computeQuote(matrix, basePrice, answers) : null),
     [matrix, basePrice, answers],
   );
 
-  const deviceLabel = `${brandName} ${model.name}${variantLabel ? ` · ${variantLabel}` : ""}`;
+  const configSummary = composedEntry
+    ? axes.map(({ axis }) => axisOptionLabel(axis, axisSelection[axis])).join(" · ")
+    : variantLabel;
+  const deviceLabel = `${brandName} ${model.name}${configSummary ? ` · ${configSummary}` : ""}`;
+
   const sections = matrix.sections;
   const section = sections[stepIndex];
-
   const sectionComplete =
     section?.questions.every((q) => q.type === "multi" || answers[q.id] !== undefined) ?? false;
 
@@ -75,6 +121,8 @@ export function SellWizard({
   function goBack() {
     if (stepIndex > 0) {
       setStepIndex(stepIndex - 1);
+    } else if (composedEntry && axes.length > 0) {
+      setPhase("config");
     } else if (variantLabels.length > 1) {
       setPhase("variant");
     }
@@ -84,7 +132,8 @@ export function SellWizard({
   function restart() {
     setAnswers({});
     setStepIndex(0);
-    setPhase(variantLabels.length === 1 ? "questions" : "variant");
+    if (composedEntry) setPhase(axes.length > 0 ? "config" : "questions");
+    else setPhase(variantLabels.length === 1 ? "questions" : "variant");
     window.scrollTo({ top: 0 });
   }
 
@@ -121,10 +170,68 @@ export function SellWizard({
                 <span className="block font-semibold text-ink">{label}</span>
                 <span className="mt-1 block text-sm text-rokkam-deep">
                   {t("sell.upto")}{" "}
-                  <span className="font-mono font-bold">{formatInr(prices[label])}</span>
+                  <span className="font-mono font-bold">{formatInr(fixedPrices?.[label] ?? 0)}</span>
                 </span>
               </button>
             ))}
+          </div>
+        </div>
+      )}
+
+      {phase === "config" && composedEntry && (
+        <div className="mt-8 max-w-2xl animate-fade-up">
+          <h1 className="font-display text-3xl font-bold tracking-tight text-ink">
+            {t("sell.pickConfig")}
+          </h1>
+          <p className="mt-1 text-sm text-slate">{t("sell.configHint")}</p>
+          {model.base_config && (
+            <p className="mt-3 rounded-lg bg-sand/60 px-4 py-2.5 text-xs font-medium text-slate">
+              Base model: {model.base_config.description}
+            </p>
+          )}
+          <div className="mt-6 space-y-6">
+            {axes.map(({ axis, labels }) => (
+              <fieldset key={axis}>
+                <legend className="font-semibold text-ink">{AXIS_LABELS[axis] ?? axis}</legend>
+                <div className="mt-2.5 flex flex-wrap gap-2.5">
+                  {labels.map((label) => {
+                    const isSelected = axisSelection[axis] === label;
+                    return (
+                      <button
+                        key={label}
+                        type="button"
+                        aria-pressed={isSelected}
+                        onClick={() => setAxisSelection((prev) => ({ ...prev, [axis]: label }))}
+                        className={`rounded-xl border-2 px-4 py-2.5 text-sm font-medium transition ${
+                          isSelected
+                            ? "border-rokkam bg-rokkam/5 text-ink"
+                            : "border-ink/10 bg-white text-slate hover:border-ink/30"
+                        }`}
+                      >
+                        {axisOptionLabel(axis, label)}
+                      </button>
+                    );
+                  })}
+                </div>
+              </fieldset>
+            ))}
+          </div>
+          <div className="mt-8 flex items-center gap-5">
+            <button
+              onClick={() => {
+                setPhase("questions");
+                setStepIndex(0);
+              }}
+              className="rounded-full bg-rokkam px-8 py-3 text-sm font-semibold text-white transition hover:bg-rokkam-deep"
+            >
+              {t("wizard.next")}
+            </button>
+            {basePrice !== null && (
+              <span className="text-sm text-slate">
+                {t("sell.upto")}{" "}
+                <span className="font-mono font-bold text-rokkam-deep">{formatInr(basePrice)}</span>
+              </span>
+            )}
           </div>
         </div>
       )}
@@ -199,7 +306,7 @@ export function SellWizard({
             </div>
 
             <div className="mt-8 flex items-center gap-3 pb-24 lg:pb-0">
-              {(stepIndex > 0 || variantLabels.length > 1) && (
+              {(stepIndex > 0 || variantLabels.length > 1 || axes.length > 0) && (
                 <button
                   onClick={goBack}
                   className="rounded-full border border-ink/15 px-6 py-3 text-sm font-semibold text-ink transition hover:border-ink/40"
@@ -238,7 +345,10 @@ export function SellWizard({
             >
               <span className="text-sm font-medium">You get</span>
               <span className="flex items-center gap-2">
-                <span key={quote.finalPriceInr} className="animate-price-pop font-mono text-xl font-bold text-white">
+                <span
+                  key={quote.finalPriceInr}
+                  className="animate-price-pop font-mono text-xl font-bold text-white"
+                >
                   {formatInr(quote.finalPriceInr)}
                 </span>
                 <span aria-hidden className="text-sand/70">
@@ -263,7 +373,7 @@ function ResultScreen({
   onRestart,
 }: {
   deviceLabel: string;
-  quote: NonNullable<ReturnType<typeof computeQuote>>;
+  quote: QuoteResult;
   onRestart: () => void;
 }) {
   const [quoteCode] = useState(demoQuoteCode);
@@ -348,7 +458,10 @@ function ResultScreen({
               {t("result.book.soon")}
             </p>
           )}
-          <button onClick={onRestart} className="text-sm font-semibold text-slate underline-offset-4 hover:underline">
+          <button
+            onClick={onRestart}
+            className="text-sm font-semibold text-slate underline-offset-4 hover:underline"
+          >
             {t("result.restart")}
           </button>
         </div>

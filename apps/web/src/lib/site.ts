@@ -4,8 +4,7 @@ export const SITE = {
   // Set by the deploy workflow; custom domain rokkam.in once purchased.
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   city: "Hyderabad",
-  // WhatsApp Business number pending from client — leave empty to show "coming soon".
-  whatsappNumber: "",
+  whatsappNumber: "918448348653",
 };
 
 export function whatsappLink(text: string): string | null {
