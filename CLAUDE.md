@@ -188,8 +188,8 @@ rokkam/
 
 ## 11. MILESTONE CHECKLIST
 
-- [ ] M1: Catalog + questionnaire + quote engine + deduction ledger UI (demo-able)
-- [ ] M2: Booking + OTP + admin price matrix + order queue
+- [x] M1: Catalog + questionnaire + quote engine + deduction ledger UI (demo-able) — live at https://rokkamhq.github.io
+- [x] M2: Booking + OTP + admin price matrix + order queue — local stack (API/admin); goes public with the Mumbai VPS
 - [ ] M3: Agent app verification + deviation flow + RazorpayX payout (sandbox)
 - [ ] M4: Wipe certificate pipeline + verify page + CEIR workflow
 - [ ] M5: Resale storefront + GST invoicing
