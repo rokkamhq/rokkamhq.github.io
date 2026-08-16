@@ -9,6 +9,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "pretest": "node scripts/sync-seeds.mjs",
     "test": "node --experimental-strip-types scripts/quote.test.mjs",
     "lint": "eslint"
   },
