@@ -42,7 +42,14 @@ admin@rokkam.in (password was printed once at creation; if lost, rerun
 - All catalog seeds are `"verified": false` (GSMArena/spec-archive verification pass pending)
 - Copy is EN-only with i18n keys; TE/UR translation is a dedicated task
 
-## Next up (pick one)
+## Next up
+
+**NEXT SESSION (user-committed): build a demo APK.** Open decision at session
+start: seller-app wrapper of the live site (TWA/WebView of rokkamhq.github.io —
+quick demo) vs. starting the spec's Flutter agent app (M3, apps/agent). Confirm
+which with the user before building.
+
+Then pick one:
 
 1. **VPS deployment** (fastest path to real bookings): Mumbai VPS + `infra/docker-compose.yml`
    + Caddy + set `NEXT_PUBLIC_API_URL` in `.github/workflows/deploy.yml` → live site books real pickups
