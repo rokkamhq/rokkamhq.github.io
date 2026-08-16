@@ -31,11 +31,11 @@ pricing pass.
 
 ## Deploy
 
-Cloudflare Pages, connected to this repo:
-
-- Build command: `cd apps/web && npm install && npm run build`
-- Output directory: `apps/web/out`
-- Project name `rokkam` → https://rokkam.pages.dev, later the custom domain rokkam.in
+GitHub Pages via `.github/workflows/deploy.yml`: every push to `main` runs the
+quote-engine tests, builds the static export, and publishes it. The workflow
+detects the repo owner/name, so transferring the repo to an org (or renaming it
+to `<owner>.github.io`) redeploys to the new URL with the right base path —
+no config changes needed. Custom domain rokkam.in later.
 
 ## Status
 

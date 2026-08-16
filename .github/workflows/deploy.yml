@@ -1,0 +1,70 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: apps/web/package-lock.json
+
+      # Project sites serve under /<repo>; *.github.io repos serve at the root.
+      - name: Compute base path and site URL
+        id: paths
+        run: |
+          REPO_NAME="${GITHUB_REPOSITORY#*/}"
+          OWNER="${GITHUB_REPOSITORY%%/*}"
+          if [[ "$REPO_NAME" == *.github.io ]]; then
+            BASE_PATH=""
+          else
+            BASE_PATH="/$REPO_NAME"
+          fi
+          echo "base_path=$BASE_PATH" >> "$GITHUB_OUTPUT"
+          echo "site_url=https://$OWNER.github.io$BASE_PATH" >> "$GITHUB_OUTPUT"
+
+      - name: Install
+        working-directory: apps/web
+        run: npm ci
+
+      - name: Test
+        working-directory: apps/web
+        run: npm test
+
+      - name: Build
+        working-directory: apps/web
+        env:
+          BASE_PATH: ${{ steps.paths.outputs.base_path }}
+          NEXT_PUBLIC_SITE_URL: ${{ steps.paths.outputs.site_url }}
+        run: npm run build
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: apps/web/out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
