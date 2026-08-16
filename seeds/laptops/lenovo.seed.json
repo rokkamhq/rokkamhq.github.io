@@ -1,0 +1,108 @@
+{
+  "schema_version": "1.0",
+  "category": "laptop",
+  "verified": false,
+  "brand": { "name": "Lenovo", "slug": "lenovo", "sort": 3, "active": true },
+  "models": [
+    {
+      "name": "IdeaPad Slim 3 (2023)",
+      "slug": "lenovo-ideapad-slim-3-2023",
+      "launch_year": 2023,
+      "series": "IdeaPad",
+      "discontinued": false,
+      "aliases": ["82XQ", "IdeaPad Slim 3 15"],
+      "image_ref": "press:lenovo/ideapad-slim-3-2023",
+      "variant_mode": "composed",
+      "base_config": {
+        "description": "Ryzen 5 7520U / 8GB / 512GB SSD / integrated / 15.6\" FHD",
+        "launch_price_inr": 46990
+      },
+      "variant_axes": {
+        "cpu": [
+          { "label": "Ryzen 3 7320U", "modifier_inr": null },
+          { "label": "Ryzen 5 7520U", "modifier_inr": 0 },
+          { "label": "Core i5-1235U", "modifier_inr": null }
+        ],
+        "ram_gb": [
+          { "label": "8", "modifier_inr": 0 },
+          { "label": "16", "modifier_inr": null }
+        ],
+        "storage": [
+          { "label": "256GB SSD", "modifier_inr": null },
+          { "label": "512GB SSD", "modifier_inr": 0 }
+        ],
+        "gpu": [
+          { "label": "Integrated", "modifier_inr": 0 }
+        ]
+      }
+    },
+    {
+      "name": "ThinkPad T14 Gen 3",
+      "slug": "lenovo-thinkpad-t14-gen-3",
+      "launch_year": 2022,
+      "series": "ThinkPad T",
+      "discontinued": true,
+      "aliases": ["21AH", "21AJ"],
+      "image_ref": "press:lenovo/thinkpad-t14-gen3",
+      "variant_mode": "composed",
+      "notes": "Corporate offload volume high — expect BIOS/admin locks; agent checklist must verify no supervisor password.",
+      "base_config": {
+        "description": "Core i5-1235U / 16GB / 512GB SSD / integrated / 14\" FHD+",
+        "launch_price_inr": 110000
+      },
+      "variant_axes": {
+        "cpu": [
+          { "label": "Core i5-1235U", "modifier_inr": 0 },
+          { "label": "Core i7-1255U", "modifier_inr": null },
+          { "label": "Ryzen 5 PRO 6650U", "modifier_inr": null }
+        ],
+        "ram_gb": [
+          { "label": "8", "modifier_inr": null },
+          { "label": "16", "modifier_inr": 0 },
+          { "label": "32", "modifier_inr": null }
+        ],
+        "storage": [
+          { "label": "256GB SSD", "modifier_inr": null },
+          { "label": "512GB SSD", "modifier_inr": 0 },
+          { "label": "1TB SSD", "modifier_inr": null }
+        ],
+        "gpu": [
+          { "label": "Integrated", "modifier_inr": 0 }
+        ]
+      }
+    },
+    {
+      "name": "Legion 5 (2022)",
+      "slug": "lenovo-legion-5-2022",
+      "launch_year": 2022,
+      "series": "Legion",
+      "discontinued": true,
+      "aliases": ["82RD", "Legion 5 15ARH7H"],
+      "image_ref": "press:lenovo/legion-5-2022",
+      "variant_mode": "composed",
+      "base_config": {
+        "description": "Ryzen 7 6800H / 16GB / 512GB SSD / RTX 3060 / 15.6\" QHD 165Hz",
+        "launch_price_inr": 139990
+      },
+      "variant_axes": {
+        "cpu": [
+          { "label": "Ryzen 5 6600H", "modifier_inr": null },
+          { "label": "Ryzen 7 6800H", "modifier_inr": 0 }
+        ],
+        "ram_gb": [
+          { "label": "16", "modifier_inr": 0 },
+          { "label": "32", "modifier_inr": null }
+        ],
+        "storage": [
+          { "label": "512GB SSD", "modifier_inr": 0 },
+          { "label": "1TB SSD", "modifier_inr": null }
+        ],
+        "gpu": [
+          { "label": "RTX 3050 4GB", "modifier_inr": null },
+          { "label": "RTX 3060 6GB", "modifier_inr": 0 },
+          { "label": "RTX 3070 Ti 8GB", "modifier_inr": null }
+        ]
+      }
+    }
+  ]
+}

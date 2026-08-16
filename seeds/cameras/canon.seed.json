@@ -1,0 +1,83 @@
+{
+  "schema_version": "1.0",
+  "category": "camera",
+  "verified": false,
+  "brand": { "name": "Canon", "slug": "canon", "sort": 1, "active": true },
+  "models": [
+    {
+      "name": "EOS 1500D",
+      "slug": "canon-eos-1500d",
+      "launch_year": 2018,
+      "series": "EOS DSLR",
+      "discontinued": false,
+      "aliases": ["Rebel T7", "EOS 2000D", "Kiss X90"],
+      "image_ref": "press:canon/eos-1500d",
+      "variant_mode": "fixed",
+      "notes": "India's highest-volume entry DSLR; expect heavy kit-lens fungus in monsoon-stored units.",
+      "variants": [
+        { "label": "Body only", "attrs": { "kit": "body" }, "launch_price_inr": null, "base_price_inr": null },
+        { "label": "With 18-55mm kit", "attrs": { "kit": "18-55mm" }, "launch_price_inr": 31995, "base_price_inr": null },
+        { "label": "Dual lens kit (18-55 + 55-250)", "attrs": { "kit": "18-55mm+55-250mm" }, "launch_price_inr": 41995, "base_price_inr": null }
+      ]
+    },
+    {
+      "name": "EOS 200D II",
+      "slug": "canon-eos-200d-ii",
+      "launch_year": 2019,
+      "series": "EOS DSLR",
+      "discontinued": false,
+      "aliases": ["Rebel SL3", "EOS 250D", "Kiss X10"],
+      "image_ref": "press:canon/eos-200d-ii",
+      "variant_mode": "fixed",
+      "variants": [
+        { "label": "Body only", "attrs": { "kit": "body" }, "launch_price_inr": null, "base_price_inr": null },
+        { "label": "With 18-55mm kit", "attrs": { "kit": "18-55mm" }, "launch_price_inr": 46495, "base_price_inr": null }
+      ]
+    },
+    {
+      "name": "EOS R10",
+      "slug": "canon-eos-r10",
+      "launch_year": 2022,
+      "series": "EOS R",
+      "discontinued": false,
+      "aliases": [],
+      "image_ref": "press:canon/eos-r10",
+      "variant_mode": "fixed",
+      "variants": [
+        { "label": "Body only", "attrs": { "kit": "body" }, "launch_price_inr": 87990, "base_price_inr": null },
+        { "label": "With RF-S 18-45mm kit", "attrs": { "kit": "rf-s-18-45mm" }, "launch_price_inr": 97990, "base_price_inr": null },
+        { "label": "With RF-S 18-150mm kit", "attrs": { "kit": "rf-s-18-150mm" }, "launch_price_inr": 117990, "base_price_inr": null }
+      ]
+    },
+    {
+      "name": "EOS R6 Mark II",
+      "slug": "canon-eos-r6-mark-ii",
+      "launch_year": 2022,
+      "series": "EOS R",
+      "discontinued": false,
+      "aliases": [],
+      "image_ref": "press:canon/eos-r6-mark-ii",
+      "variant_mode": "fixed",
+      "notes": "Pro wedding/event market in Hyderabad is large — verify shutter count via EXIF tool at pickup; high counts common.",
+      "variants": [
+        { "label": "Body only", "attrs": { "kit": "body" }, "launch_price_inr": 215995, "base_price_inr": null },
+        { "label": "With RF 24-105mm f/4L kit", "attrs": { "kit": "rf-24-105-f4l" }, "launch_price_inr": 304990, "base_price_inr": null }
+      ]
+    },
+    {
+      "name": "EOS M50 Mark II",
+      "slug": "canon-eos-m50-mark-ii",
+      "launch_year": 2020,
+      "series": "EOS M",
+      "discontinued": true,
+      "aliases": ["Kiss M2"],
+      "image_ref": "press:canon/eos-m50-mark-ii",
+      "variant_mode": "fixed",
+      "notes": "EF-M mount dead-ended — price conservatively; resale velocity slowing.",
+      "variants": [
+        { "label": "Body only", "attrs": { "kit": "body" }, "launch_price_inr": null, "base_price_inr": null },
+        { "label": "With EF-M 15-45mm kit", "attrs": { "kit": "ef-m-15-45mm" }, "launch_price_inr": 58995, "base_price_inr": null }
+      ]
+    }
+  ]
+}

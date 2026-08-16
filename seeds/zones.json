@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0",
+  "status": "v1 DRAFT — CLAUDE.md §7, client to confirm pincode mapping before launch.",
+  "zones": [
+    {
+      "id": "A",
+      "name": "Zone A",
+      "sla_label": "Pickup in 60–90 minutes",
+      "sla_minutes": 90,
+      "areas": ["Hitec City", "Gachibowli", "Madhapur", "Kondapur", "Jubilee Hills", "Banjara Hills"],
+      "pincodes": ["500032", "500033", "500034", "500081", "500084", "500096"]
+    },
+    {
+      "id": "B",
+      "name": "Zone B",
+      "sla_label": "Same-day pickup",
+      "sla_minutes": 480,
+      "areas": ["Kukatpally", "Miyapur", "Secunderabad", "Begumpet", "Ameerpet", "Dilsukhnagar", "LB Nagar"],
+      "pincodes": ["500003", "500009", "500015", "500016", "500025", "500026", "500035", "500038", "500049", "500060", "500072", "500073", "500074"]
+    },
+    {
+      "id": "C",
+      "name": "Zone C",
+      "sla_label": "Next-day pickup",
+      "sla_minutes": 1440,
+      "areas": ["Rest of GHMC"],
+      "pincode_prefixes": ["500"]
+    }
+  ],
+  "outside_message_key": "zones.outside"
+}

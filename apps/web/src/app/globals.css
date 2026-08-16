@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+:root {
+  /* Rokkam palette — CLAUDE.md §2 */
+  --ink: #101418;
+  --paper: #f6f1e7;
+  --sand: #e8dcc8;
+  --rokkam-green: #0e8f5b;
+  --rokkam-green-deep: #0a6b45;
+  --deccan-slate: #3b4754;
+  --alert-amber: #e0a400;
+  --brick: #bf4034;
+}
+
+@theme inline {
+  --color-ink: var(--ink);
+  --color-paper: var(--paper);
+  --color-sand: var(--sand);
+  --color-rokkam: var(--rokkam-green);
+  --color-rokkam-deep: var(--rokkam-green-deep);
+  --color-slate: var(--deccan-slate);
+  --color-amber: var(--alert-amber);
+  --color-brick: var(--brick);
+
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-display: var(--font-anek), var(--font-inter), system-ui, sans-serif;
+  --font-mono: var(--font-jbmono), ui-monospace, monospace;
+
+  --animate-ledger-in: ledger-in 0.45s cubic-bezier(0.2, 0.9, 0.3, 1) both;
+  --animate-price-pop: price-pop 0.5s cubic-bezier(0.2, 0.9, 0.3, 1.2) both;
+  --animate-fade-up: fade-up 0.6s ease-out both;
+}
+
+@keyframes ledger-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes price-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Receipt paper edge — used by the deduction ledger */
+.receipt-edge {
+  --notch: 10px;
+  mask-image: linear-gradient(to bottom, black 0, black calc(100% - var(--notch))),
+    radial-gradient(
+      circle at var(--notch) 100%,
+      transparent var(--notch),
+      black calc(var(--notch) + 0.5px)
+    );
+  mask-size: 100% 100%, calc(var(--notch) * 2) var(--notch);
+  mask-position: 0 0, 0 100%;
+  mask-repeat: no-repeat, repeat-x;
+  mask-composite: intersect;
+}
