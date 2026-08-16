@@ -1,6 +1,11 @@
 node_modules/
 .next/
 out/
+.venv/
+__pycache__/
+*.pyc
+services/api/data/
+*.db
 dist/
 *.log
 .env

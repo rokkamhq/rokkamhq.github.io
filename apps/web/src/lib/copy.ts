@@ -89,6 +89,18 @@ const en: Record<string, string> = {
   "result.book.soon": "Online slot booking is landing shortly — WhatsApp booking opens first.",
   "result.restart": "Re-check with different answers",
 
+  "booking.title": "Book your pickup",
+  "booking.phone.label": "Your mobile number",
+  "booking.phone.cta": "Send OTP",
+  "booking.otp.label": "Enter the 6-digit code sent to",
+  "booking.otp.cta": "Verify",
+  "booking.address.line1": "Flat / house, street, area",
+  "booking.address.line2": "Landmark (optional)",
+  "booking.address.cta": "Find pickup slots",
+  "booking.done.title": "Pickup booked ✅",
+  "booking.done.body": "Your order number is",
+  "booking.done.amount": "Agent pays you via UPI on verification:",
+
   "decline.title": "We can't buy this one",
   "decline.body":
     "We're unable to complete this purchase. Nothing is wrong with asking — but this device doesn't fit what we can legally buy and resell.",

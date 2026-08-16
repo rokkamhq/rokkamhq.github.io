@@ -1,0 +1,33 @@
+# Local/VPS stack: Postgres 16 + API. Redis joins with the ops phase
+# (slot capacity locks, quote-lock TTLs). Build context is the repo root.
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: rokkam
+      POSTGRES_USER: rokkam
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U rokkam"]
+      interval: 5s
+      retries: 10
+
+  api:
+    build:
+      context: ..
+      dockerfile: services/api/Dockerfile
+    environment:
+      DATABASE_URL: postgresql+psycopg://rokkam:${POSTGRES_PASSWORD}@db:5432/rokkam
+      JWT_SECRET: ${JWT_SECRET:?set JWT_SECRET in .env}
+      DEV_MODE: ${DEV_MODE:-0}
+      ALLOWED_ORIGINS: ${ALLOWED_ORIGINS:-https://rokkamhq.github.io}
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  pgdata:

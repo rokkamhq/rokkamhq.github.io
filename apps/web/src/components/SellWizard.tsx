@@ -1,12 +1,14 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { composedBase, computeQuote, demoQuoteCode, QUOTE_LOCK_DAYS } from "@/lib/quote";
 import { zoneForPincode, type ZoneMatch } from "@/lib/zones";
 import { whatsappLink } from "@/lib/site";
 import { formatInr } from "@/lib/format";
 import { t } from "@/lib/copy";
+import { apiEnabled, createQuote, type QuotePayload, type ServerQuote } from "@/lib/api";
+import { BookingFlow } from "./BookingFlow";
 import { LedgerReceipt } from "./LedgerReceipt";
 import type { Answers, ComposedPriceEntry, DeductionMatrix, QuoteResult, SeedModel } from "@/lib/types";
 
@@ -361,7 +363,17 @@ export function SellWizard({
       )}
 
       {phase === "result" && quote && (
-        <ResultScreen deviceLabel={deviceLabel} quote={quote} onRestart={restart} />
+        <ResultScreen
+          deviceLabel={deviceLabel}
+          quote={quote}
+          onRestart={restart}
+          payload={{
+            category,
+            model_slug: model.slug,
+            ...(composedEntry ? { axis_selection: axisSelection } : { variant_label: variantLabel ?? undefined }),
+            answers,
+          }}
+        />
       )}
     </div>
   );
@@ -371,20 +383,42 @@ function ResultScreen({
   deviceLabel,
   quote,
   onRestart,
+  payload,
 }: {
   deviceLabel: string;
   quote: QuoteResult;
   onRestart: () => void;
+  payload: QuotePayload;
 }) {
-  const [quoteCode] = useState(demoQuoteCode);
+  const [demoCode] = useState(demoQuoteCode);
+  const [serverQuote, setServerQuote] = useState<ServerQuote | null>(null);
   const [pincode, setPincode] = useState("");
   const [zoneMatch, setZoneMatch] = useState<ZoneMatch | null>(null);
-  const lockUntil = new Date(Date.now() + QUOTE_LOCK_DAYS * 86400_000).toLocaleDateString("en-IN", {
-    day: "numeric",
-    month: "long",
-  });
+
+  // With an API configured the server issues the authoritative locked quote;
+  // the local ledger is a preview until it arrives.
+  useEffect(() => {
+    if (!apiEnabled) return;
+    let cancelled = false;
+    createQuote(payload)
+      .then((sq) => {
+        if (!cancelled && sq.status === "locked") setServerQuote(sq);
+      })
+      .catch(() => {});
+    return () => {
+      cancelled = true;
+    };
+    // payload is stable once the result screen mounts
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const quoteCode = serverQuote?.public_code ?? demoCode;
+  const finalPrice = serverQuote?.final_price_inr ?? quote.finalPriceInr;
+  const lockUntil = (
+    serverQuote ? new Date(serverQuote.locked_until) : new Date(Date.now() + QUOTE_LOCK_DAYS * 86400_000)
+  ).toLocaleDateString("en-IN", { day: "numeric", month: "long" });
   const waLink = whatsappLink(
-    `Hi Rokkam! Quote ${quoteCode}: ${deviceLabel} for ${formatInr(quote.finalPriceInr)}. I'd like to book a pickup.`,
+    `Hi Rokkam! Quote ${quoteCode}: ${deviceLabel} for ${formatInr(finalPrice)}. I'd like to book a pickup.`,
   );
 
   return (
@@ -396,7 +430,7 @@ function ResultScreen({
         <div className="mt-6 rounded-3xl bg-ink p-8 text-paper">
           <p className="text-sm text-sand/80">{deviceLabel}</p>
           <p className="mt-2 animate-price-pop font-mono text-5xl font-bold text-white">
-            {formatInr(quote.finalPriceInr)}
+            {formatInr(finalPrice)}
           </p>
           <p className="mt-3 text-sm text-sand/80">🔒 {t("result.lockNote")}</p>
           <p className="mt-4 border-t border-paper/10 pt-4 text-sm text-sand/80">
@@ -406,45 +440,51 @@ function ResultScreen({
           </p>
         </div>
 
-        <div className="mt-6 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-ink/5">
-          <label htmlFor="pincode" className="block font-semibold text-ink">
-            {t("result.pincode.label")}
-          </label>
-          <div className="mt-3 flex gap-3">
-            <input
-              id="pincode"
-              inputMode="numeric"
-              maxLength={6}
-              value={pincode}
-              onChange={(e) => {
-                setPincode(e.target.value.replace(/\D/g, ""));
-                setZoneMatch(null);
-              }}
-              placeholder="500081"
-              className="w-36 rounded-xl border-2 border-ink/10 bg-paper px-4 py-3 font-mono text-lg text-ink outline-none focus:border-rokkam"
-            />
-            <button
-              onClick={() => setZoneMatch(zoneForPincode(pincode))}
-              disabled={pincode.length !== 6}
-              className="rounded-xl bg-slate px-5 py-3 text-sm font-semibold text-white transition enabled:hover:bg-ink disabled:opacity-40"
-            >
-              {t("result.pincode.cta")}
-            </button>
+        {serverQuote ? (
+          <div className="mt-6">
+            <BookingFlow quoteCode={serverQuote.public_code} amountInr={serverQuote.final_price_inr} />
           </div>
-          {zoneMatch &&
-            (zoneMatch.serviceable ? (
-              <p className="mt-3 animate-ledger-in rounded-lg bg-rokkam/10 px-4 py-3 text-sm font-medium text-rokkam-deep">
-                ✅ {zoneMatch.zone.name} — {zoneMatch.zone.sla_label}
-              </p>
-            ) : (
-              <p className="mt-3 animate-ledger-in rounded-lg bg-amber/15 px-4 py-3 text-sm font-medium text-slate">
-                {t("zones.outside")}
-              </p>
-            ))}
-        </div>
+        ) : (
+          <div className="mt-6 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-ink/5">
+            <label htmlFor="pincode" className="block font-semibold text-ink">
+              {t("result.pincode.label")}
+            </label>
+            <div className="mt-3 flex gap-3">
+              <input
+                id="pincode"
+                inputMode="numeric"
+                maxLength={6}
+                value={pincode}
+                onChange={(e) => {
+                  setPincode(e.target.value.replace(/\D/g, ""));
+                  setZoneMatch(null);
+                }}
+                placeholder="500081"
+                className="w-36 rounded-xl border-2 border-ink/10 bg-paper px-4 py-3 font-mono text-lg text-ink outline-none focus:border-rokkam"
+              />
+              <button
+                onClick={() => setZoneMatch(zoneForPincode(pincode))}
+                disabled={pincode.length !== 6}
+                className="rounded-xl bg-slate px-5 py-3 text-sm font-semibold text-white transition enabled:hover:bg-ink disabled:opacity-40"
+              >
+                {t("result.pincode.cta")}
+              </button>
+            </div>
+            {zoneMatch &&
+              (zoneMatch.serviceable ? (
+                <p className="mt-3 animate-ledger-in rounded-lg bg-rokkam/10 px-4 py-3 text-sm font-medium text-rokkam-deep">
+                  ✅ {zoneMatch.zone.name} — {zoneMatch.zone.sla_label}
+                </p>
+              ) : (
+                <p className="mt-3 animate-ledger-in rounded-lg bg-amber/15 px-4 py-3 text-sm font-medium text-slate">
+                  {t("zones.outside")}
+                </p>
+              ))}
+          </div>
+        )}
 
         <div className="mt-6 flex flex-wrap items-center gap-3">
-          {waLink ? (
+          {!serverQuote && waLink && (
             <a
               href={waLink}
               target="_blank"
@@ -453,10 +493,6 @@ function ResultScreen({
             >
               {t("result.book.wa")}
             </a>
-          ) : (
-            <p className="rounded-xl bg-sand px-5 py-3 text-sm font-medium text-slate">
-              {t("result.book.soon")}
-            </p>
           )}
           <button
             onClick={onRestart}

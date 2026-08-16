@@ -7,13 +7,17 @@ Hyperlocal re-commerce platform for Hyderabad + Secunderabad (GHMC): device buyb
 ## Repo layout
 
 ```
-apps/web        Next.js seller site (Phase 1 sell-flow MVP) — static export
-seeds/          Canonical catalog, pricing and zone data (source of truth)
-services/       FastAPI backend (Phase 1+)
-packages/       pricing engine, certificate generator (Phase 2+)
-docs/           Pricing rules, zones, compliance, runbook
-infra/          docker-compose, Caddy, backups
+apps/web          Next.js seller site — static export (rokkamhq.github.io)
+apps/admin        Next.js admin dashboard (prices, rules, orders, audit)
+services/api      FastAPI monolith: quotes, OTP auth, booking, admin
+packages/pricing  Pure-Python pricing engine (TS mirror in apps/web)
+seeds/            Canonical catalog, pricing and zone data (source of truth)
+docs/             Pricing rules, runbook, compliance
+infra/            docker-compose (Postgres 16 + API)
 ```
+
+Local dev for the full stack (API + admin + booking): see
+[docs/RUNBOOK.md](docs/RUNBOOK.md).
 
 ## Web app (apps/web)
 
@@ -40,7 +44,8 @@ no config changes needed. Custom domain rokkam.in later.
 ## Status
 
 - [x] M1: Catalog + questionnaire + quote engine + deduction ledger UI
-- [ ] M2: Booking + OTP + admin price matrix + order queue
+- [x] M2: Booking + OTP + admin price matrix + order queue (local stack; goes
+      public with the Mumbai VPS deployment)
 - [ ] M3: Agent app verification + payouts
 - [ ] M4: Wipe certificates + CEIR workflow
 - [ ] M5: Resale storefront
