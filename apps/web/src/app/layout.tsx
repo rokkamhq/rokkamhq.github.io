@@ -1,26 +1,13 @@
 import type { Metadata } from "next";
-import { Anek_Telugu, Inter, JetBrains_Mono } from "next/font/google";
+// Self-hosted fonts (no build-time CDN fetch — CI-safe): Inter for UI,
+// Anek Telugu for display + the wordmark, JetBrains Mono for money/IDs.
+import "@fontsource-variable/inter";
+import "@fontsource-variable/anek-telugu";
+import "@fontsource-variable/jetbrains-mono";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SITE } from "@/lib/site";
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-});
-
-const anek = Anek_Telugu({
-  variable: "--font-anek",
-  subsets: ["latin", "telugu"],
-  weight: ["500", "600", "700", "800"],
-});
-
-const jbMono = JetBrains_Mono({
-  variable: "--font-jbmono",
-  subsets: ["latin"],
-  weight: ["400", "500", "700"],
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
@@ -34,10 +21,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html
-      lang="en"
-      className={`${inter.variable} ${anek.variable} ${jbMono.variable} h-full antialiased`}
-    >
+    <html lang="en" className="h-full antialiased">
       <body className="min-h-full flex flex-col">
         <Header />
         <main className="flex-1">{children}</main>
