@@ -71,6 +71,8 @@ const en: Record<string, string> = {
   "sell.pickConfig": "Which configuration is yours?",
   "sell.configHint": "Pick what's inside your machine — the price adjusts as you choose.",
   "sell.cameras.soon": "Cameras — coming soon",
+  "sell.search.placeholder": "Type your model — iPhone 13, S23, ThinkPad…",
+  "sell.search.noResults": "No match — pick a category below and browse.",
 
   "wizard.ledgerTitle": "Your price, live",
   "wizard.base": "Base price",
@@ -88,6 +90,9 @@ const en: Record<string, string> = {
   "result.book.wa": "Book pickup on WhatsApp",
   "result.book.soon": "Online slot booking is landing shortly — WhatsApp booking opens first.",
   "result.restart": "Re-check with different answers",
+  "result.serverLocked": "Locked on Rokkam servers — the agent app cannot change it.",
+  "result.copy": "Copy code",
+  "result.copied": "Copied ✓",
 
   "booking.title": "Book your pickup",
   "booking.phone.label": "Your mobile number",
@@ -100,6 +105,11 @@ const en: Record<string, string> = {
   "booking.done.title": "Pickup booked ✅",
   "booking.done.body": "Your order number is",
   "booking.done.amount": "Agent pays you via UPI on verification:",
+  "booking.next.title": "What happens next",
+  "booking.next.1": "An agent is assigned to your slot — you'll get their name by SMS/WhatsApp.",
+  "booking.next.2": "At your door they run the exact checklist you just answered. Match = locked price, no haggling.",
+  "booking.next.3": "IMEI is screened against the national CEIR registry before payment.",
+  "booking.next.4": "UPI hits your account before the agent leaves. Your data-wipe certificate follows.",
 
   "decline.title": "We can't buy this one",
   "decline.body":

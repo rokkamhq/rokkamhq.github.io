@@ -1,7 +1,8 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { listCategories, listSellableModels } from "@/lib/catalog";
+import { listAllSellableModels, listCategories, listSellableModels } from "@/lib/catalog";
 import { t } from "@/lib/copy";
+import { ModelSearch } from "@/components/ModelSearch";
 
 export const metadata: Metadata = { title: "Sell your device" };
 
@@ -16,6 +17,9 @@ export default function SellPage() {
         {t("sell.title")}
       </h1>
       <p className="mt-2 text-slate">{t("sell.sub")}</p>
+      <div className="mt-6">
+        <ModelSearch models={listAllSellableModels()} />
+      </div>
       <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {categories.map((category) => {
           const modelCount = category.seeds.reduce(

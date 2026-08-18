@@ -66,6 +66,24 @@ export function BookingFlow({ quoteCode, amountInr }: { quoteCode: string; amoun
           {t("booking.done.amount")}{" "}
           <span className="font-mono font-bold text-rokkam-deep">{formatInr(amountInr)}</span>
         </p>
+        <div className="mt-5 border-t border-rokkam/20 pt-4">
+          <p className="font-mono text-xs font-bold uppercase tracking-widest text-slate">
+            {t("booking.next.title")}
+          </p>
+          <ol className="mt-3 space-y-2.5">
+            {([1, 2, 3, 4] as const).map((n) => (
+              <li key={n} className="flex gap-3 text-sm leading-relaxed text-slate">
+                <span
+                  aria-hidden
+                  className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-rokkam/15 font-mono text-[10px] font-bold text-rokkam-deep"
+                >
+                  {n}
+                </span>
+                {t(`booking.next.${n}`)}
+              </li>
+            ))}
+          </ol>
+        </div>
       </div>
     );
   }

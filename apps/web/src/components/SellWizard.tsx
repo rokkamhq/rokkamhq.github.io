@@ -391,9 +391,18 @@ function ResultScreen({
   payload: QuotePayload;
 }) {
   const [demoCode] = useState(demoQuoteCode);
+  const [demoLockUntil] = useState(() => new Date(Date.now() + QUOTE_LOCK_DAYS * 86400_000));
   const [serverQuote, setServerQuote] = useState<ServerQuote | null>(null);
   const [pincode, setPincode] = useState("");
   const [zoneMatch, setZoneMatch] = useState<ZoneMatch | null>(null);
+  const [copied, setCopied] = useState(false);
+
+  function copyCode(code: string) {
+    navigator.clipboard?.writeText(code).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
+  }
 
   // With an API configured the server issues the authoritative locked quote;
   // the local ledger is a preview until it arrives.
@@ -414,9 +423,10 @@ function ResultScreen({
 
   const quoteCode = serverQuote?.public_code ?? demoCode;
   const finalPrice = serverQuote?.final_price_inr ?? quote.finalPriceInr;
-  const lockUntil = (
-    serverQuote ? new Date(serverQuote.locked_until) : new Date(Date.now() + QUOTE_LOCK_DAYS * 86400_000)
-  ).toLocaleDateString("en-IN", { day: "numeric", month: "long" });
+  const lockUntil = (serverQuote ? new Date(serverQuote.locked_until) : demoLockUntil).toLocaleDateString(
+    "en-IN",
+    { day: "numeric", month: "long" },
+  );
   const waLink = whatsappLink(
     `Hi Rokkam! Quote ${quoteCode}: ${deviceLabel} for ${formatInr(finalPrice)}. I'd like to book a pickup.`,
   );
@@ -433,11 +443,26 @@ function ResultScreen({
             {formatInr(finalPrice)}
           </p>
           <p className="mt-3 text-sm text-sand/80">🔒 {t("result.lockNote")}</p>
-          <p className="mt-4 border-t border-paper/10 pt-4 text-sm text-sand/80">
-            {t("result.quoteCode")}:{" "}
-            <span className="font-mono font-bold text-white">{quoteCode}</span>
-            <span className="text-sand/60"> · valid till {lockUntil}</span>
+          <p className="mt-4 flex flex-wrap items-center gap-x-2 gap-y-1 border-t border-paper/10 pt-4 text-sm text-sand/80">
+            <span>
+              {t("result.quoteCode")}:{" "}
+              <span className="font-mono font-bold text-white">{quoteCode}</span>
+              <span className="text-sand/60"> · valid till {lockUntil}</span>
+            </span>
+            <button
+              type="button"
+              onClick={() => copyCode(quoteCode)}
+              className="rounded-full border border-paper/20 px-3 py-1 text-xs font-semibold text-sand/90 transition hover:border-paper/50"
+            >
+              {copied ? t("result.copied") : t("result.copy")}
+            </button>
           </p>
+          {serverQuote && (
+            <p className="mt-3 inline-flex items-center gap-2 rounded-full bg-rokkam/20 px-3.5 py-1.5 text-xs font-semibold text-white animate-ledger-in">
+              <span className="h-2 w-2 rounded-full bg-rokkam" aria-hidden />
+              {t("result.serverLocked")}
+            </p>
+          )}
         </div>
 
         {serverQuote ? (

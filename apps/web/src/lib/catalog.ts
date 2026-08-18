@@ -116,6 +116,39 @@ export function laptopPriceFor(modelSlug: string): ComposedPriceEntry | undefine
   return LAPTOP_PRICES.prices[modelSlug];
 }
 
+/** Flat, serializable list of every sellable model — feeds the /sell search box. */
+export interface SearchableModel {
+  category: CategorySlug;
+  brandSlug: string;
+  brandName: string;
+  name: string;
+  slug: string;
+  aliases: string[];
+  launchYear: number;
+  maxPrice: number | null;
+}
+
+export function listAllSellableModels(): SearchableModel[] {
+  const out: SearchableModel[] = [];
+  for (const category of listCategories()) {
+    for (const brandSeed of category.seeds) {
+      for (const model of listSellableModels(category.slug, brandSeed.brand.slug)) {
+        out.push({
+          category: category.slug,
+          brandSlug: brandSeed.brand.slug,
+          brandName: brandSeed.brand.name,
+          name: model.name,
+          slug: model.slug,
+          aliases: model.aliases ?? [],
+          launchYear: model.launch_year,
+          maxPrice: maxPriceFor(category.slug, model.slug),
+        });
+      }
+    }
+  }
+  return out;
+}
+
 /** Ceiling shown on model cards: "Get up to ₹X". */
 export function maxPriceFor(category: CategorySlug, modelSlug: string): number | null {
   if (category === "phones") {
