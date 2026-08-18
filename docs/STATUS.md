@@ -1,6 +1,6 @@
 # Project status — pick-up-here tracker
 
-_Last session: 2026-08-16. Update this file at the end of every working session._
+_Last session: 2026-08-18. Update this file at the end of every working session._
 
 ## Where things stand
 
@@ -44,10 +44,13 @@ admin@rokkam.in (password was printed once at creation; if lost, rerun
 
 ## Next up
 
-**NEXT SESSION (user-committed): build a demo APK.** Open decision at session
-start: seller-app wrapper of the live site (TWA/WebView of rokkamhq.github.io —
-quick demo) vs. starting the spec's Flutter agent app (M3, apps/agent). Confirm
-which with the user before building.
+**Demo prep (2026-08-18):** local stack verified end-to-end (quote → OTP →
+booking → admin queue). Web polish shipped: /sell model search, post-booking
+"what happens next" timeline, quote-code copy + server-lock badge. User is
+recording a demo video against the local stack; **after that: full APK that
+runs on the user's phone with dev settings** (decision: full app, not a quick
+TWA wrapper — phone must reach the dev API over LAN, so NEXT_PUBLIC_API_URL
+and ALLOWED_ORIGINS need the machine's LAN IP).
 
 Then pick one:
 
