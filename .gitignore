@@ -14,3 +14,5 @@ dist/
 .DS_Store
 Thumbs.db
 *.egg-info/
+
+ADMIN_CREDENTIALS.txt
