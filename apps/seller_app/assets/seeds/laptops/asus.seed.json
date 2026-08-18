@@ -1,0 +1,94 @@
+{
+  "schema_version": "1.0",
+  "category": "laptop",
+  "verified": false,
+  "brand": { "name": "Asus", "slug": "asus", "sort": 5, "active": true },
+  "models": [
+    {
+      "name": "VivoBook 15 X1502",
+      "slug": "asus-vivobook-15-x1502",
+      "launch_year": 2022,
+      "series": "VivoBook",
+      "discontinued": false,
+      "aliases": ["X1502ZA"],
+      "image_ref": "press:asus/vivobook-15-x1502",
+      "variant_mode": "composed",
+      "base_config": {
+        "description": "Core i5-1240P / 8GB / 512GB SSD / integrated / 15.6\" FHD",
+        "launch_price_inr": null
+      },
+      "variant_axes": {
+        "cpu": [
+          { "label": "Core i3-1220P", "modifier_inr": null },
+          { "label": "Core i5-1240P", "modifier_inr": 0 }
+        ],
+        "ram_gb": [
+          { "label": "8", "modifier_inr": 0 },
+          { "label": "16", "modifier_inr": null }
+        ],
+        "storage": [
+          { "label": "512GB SSD", "modifier_inr": 0 }
+        ]
+      }
+    },
+    {
+      "name": "ZenBook 14 OLED UX3402",
+      "slug": "asus-zenbook-14-oled-ux3402",
+      "launch_year": 2022,
+      "series": "ZenBook",
+      "discontinued": true,
+      "aliases": ["UX3402ZA"],
+      "image_ref": "press:asus/zenbook-14-oled-ux3402",
+      "variant_mode": "composed",
+      "base_config": {
+        "description": "Core i5-1240P / 16GB / 512GB SSD / integrated / 14\" 2.8K OLED",
+        "launch_price_inr": null
+      },
+      "variant_axes": {
+        "cpu": [
+          { "label": "Core i5-1240P", "modifier_inr": 0 },
+          { "label": "Core i7-1260P", "modifier_inr": null }
+        ],
+        "ram_gb": [
+          { "label": "16", "modifier_inr": 0 }
+        ],
+        "storage": [
+          { "label": "512GB SSD", "modifier_inr": 0 },
+          { "label": "1TB SSD", "modifier_inr": null }
+        ]
+      }
+    },
+    {
+      "name": "TUF Gaming F15 (2022)",
+      "slug": "asus-tuf-gaming-f15-2022",
+      "launch_year": 2022,
+      "series": "TUF Gaming",
+      "discontinued": false,
+      "aliases": ["FX507ZC4"],
+      "image_ref": "press:asus/tuf-gaming-f15-2022",
+      "variant_mode": "composed",
+      "base_config": {
+        "description": "Core i5-12500H / 16GB / 512GB SSD / RTX 3050 / 15.6\" FHD 144Hz",
+        "launch_price_inr": null
+      },
+      "variant_axes": {
+        "cpu": [
+          { "label": "Core i5-12500H", "modifier_inr": 0 },
+          { "label": "Core i7-12700H", "modifier_inr": null }
+        ],
+        "ram_gb": [
+          { "label": "8", "modifier_inr": null },
+          { "label": "16", "modifier_inr": 0 }
+        ],
+        "storage": [
+          { "label": "512GB SSD", "modifier_inr": 0 },
+          { "label": "1TB SSD", "modifier_inr": null }
+        ],
+        "gpu": [
+          { "label": "RTX 3050 4GB", "modifier_inr": 0 },
+          { "label": "RTX 3060 6GB", "modifier_inr": null }
+        ]
+      }
+    }
+  ]
+}

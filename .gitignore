@@ -16,3 +16,4 @@ Thumbs.db
 *.egg-info/
 
 ADMIN_CREDENTIALS.txt
+*.apk

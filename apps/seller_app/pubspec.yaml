@@ -1,0 +1,45 @@
+name: rokkam_seller
+description: "Rokkam — sell your phone in Hyderabad. Seller app (demo build)."
+publish_to: 'none'
+version: 0.1.0+1
+
+environment:
+  sdk: ^3.12.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  http: ^1.2.0
+  shared_preferences: ^2.3.0
+  url_launcher: ^6.3.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  flutter_launcher_icons: ^0.14.1
+
+flutter_launcher_icons:
+  android: true
+  ios: false
+  image_path: "assets/icon/icon.png"
+  adaptive_icon_background: "#0E8F5B"
+  adaptive_icon_foreground: "assets/icon/icon_fg.png"
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/seeds/
+    - assets/seeds/phones/
+    - assets/seeds/laptops/
+    - assets/seeds/pricing/
+  fonts:
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/Inter.ttf
+    - family: AnekTelugu
+      fonts:
+        - asset: assets/fonts/AnekTelugu.ttf
+    - family: JetBrainsMono
+      fonts:
+        - asset: assets/fonts/JetBrainsMono.ttf

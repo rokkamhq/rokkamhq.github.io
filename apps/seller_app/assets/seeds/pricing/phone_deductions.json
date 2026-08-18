@@ -1,0 +1,171 @@
+{
+  "schema_version": "1.0",
+  "category": "phone",
+  "status": "DEMO values — deduction matrix v1 for M1. Values reviewed in admin pricing pass before launch.",
+  "sign_convention": "deduction.value > 0 lowers the price; value < 0 is a bonus (spec: bonuses are negative deductions). type: pct = % of base price, flat = INR.",
+  "sections": [
+    {
+      "id": "authenticity",
+      "title_en": "Device check",
+      "questions": [
+        {
+          "id": "authenticity",
+          "type": "single",
+          "text_en": "Is this an original phone bought from an authorised store?",
+          "options": [
+            { "id": "original_india", "label_en": "Yes, bought in India", "deduction": null },
+            { "id": "original_import", "label_en": "Yes, but bought abroad / imported", "deduction": null, "note_en": "Our agent will check the region lock at pickup." },
+            { "id": "clone", "label_en": "It's a copy / first-copy phone", "deduction": null, "kills_deal": true }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "power",
+      "title_en": "Power & performance",
+      "questions": [
+        {
+          "id": "powers_on",
+          "type": "single",
+          "text_en": "Does your phone switch on and run normally?",
+          "options": [
+            { "id": "normal", "label_en": "Yes, works normally", "deduction": null },
+            { "id": "unstable", "label_en": "Switches on, but hangs or restarts", "deduction": { "type": "pct", "value": 18 } },
+            { "id": "dead", "label_en": "Does not switch on", "deduction": { "type": "pct", "value": 65 } }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "display",
+      "title_en": "Display",
+      "questions": [
+        {
+          "id": "display_condition",
+          "type": "single",
+          "text_en": "How is the display?",
+          "options": [
+            { "id": "flawless", "label_en": "Flawless — no marks", "deduction": null },
+            { "id": "minor_scratches", "label_en": "Minor scratches, all visible fine", "deduction": { "type": "pct", "value": 5 } },
+            { "id": "spots_lines", "label_en": "Spots, patches or lines on screen", "deduction": { "type": "pct", "value": 22 } },
+            { "id": "cracked", "label_en": "Glass cracked, display works", "deduction": { "type": "pct", "value": 30 } },
+            { "id": "broken", "label_en": "Badly shattered / display not visible", "deduction": { "type": "pct", "value": 45 } }
+          ]
+        },
+        {
+          "id": "touch",
+          "type": "single",
+          "text_en": "Does touch work everywhere on the screen?",
+          "options": [
+            { "id": "full", "label_en": "Yes, fully working", "deduction": null },
+            { "id": "partial", "label_en": "No, some areas don't respond", "deduction": { "type": "pct", "value": 28 } }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "body",
+      "title_en": "Body & frame",
+      "questions": [
+        {
+          "id": "body_condition",
+          "type": "single",
+          "text_en": "How is the body and frame?",
+          "options": [
+            { "id": "like_new", "label_en": "Like new", "deduction": null },
+            { "id": "light_scratches", "label_en": "Light scratches only", "deduction": { "type": "pct", "value": 4 } },
+            { "id": "dents", "label_en": "Visible dents or chips", "deduction": { "type": "pct", "value": 10 } },
+            { "id": "bent", "label_en": "Bent frame or cracked back glass", "deduction": { "type": "pct", "value": 18 } }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "functions",
+      "title_en": "Cameras & functions",
+      "questions": [
+        {
+          "id": "camera",
+          "type": "single",
+          "text_en": "Are both cameras working fine?",
+          "options": [
+            { "id": "fine", "label_en": "Yes, photos are clean", "deduction": null },
+            { "id": "blur", "label_en": "Blur, spots or focus issues", "deduction": { "type": "pct", "value": 12 } },
+            { "id": "dead", "label_en": "A camera doesn't work", "deduction": { "type": "pct", "value": 22 } }
+          ]
+        },
+        {
+          "id": "battery",
+          "type": "single",
+          "text_en": "How is the battery?",
+          "options": [
+            { "id": "great", "label_en": "Health above 85% / lasts the day", "deduction": null },
+            { "id": "okay", "label_en": "Health 80–85% / drains a bit fast", "deduction": { "type": "pct", "value": 6 } },
+            { "id": "weak", "label_en": "Below 80% or battery service warning", "deduction": { "type": "pct", "value": 14 } }
+          ]
+        },
+        {
+          "id": "biometrics",
+          "type": "single",
+          "text_en": "Face unlock / fingerprint working?",
+          "options": [
+            { "id": "working", "label_en": "Yes", "deduction": null },
+            { "id": "not_working", "label_en": "No", "deduction": { "type": "pct", "value": 8 } }
+          ]
+        },
+        {
+          "id": "sound",
+          "type": "single",
+          "text_en": "Speaker and mic working fine?",
+          "options": [
+            { "id": "fine", "label_en": "Yes, both fine", "deduction": null },
+            { "id": "issue", "label_en": "Speaker or mic has issues", "deduction": { "type": "pct", "value": 8 } }
+          ]
+        },
+        {
+          "id": "network",
+          "type": "single",
+          "text_en": "Calls, SIM and network working normally?",
+          "options": [
+            { "id": "fine", "label_en": "Yes", "deduction": null },
+            { "id": "issue", "label_en": "No, SIM or network problems", "deduction": { "type": "pct", "value": 25 } }
+          ]
+        },
+        {
+          "id": "water",
+          "type": "single",
+          "text_en": "Has the phone ever been water damaged?",
+          "options": [
+            { "id": "never", "label_en": "Never", "deduction": null },
+            { "id": "yes", "label_en": "Yes / not sure", "deduction": { "type": "pct", "value": 35 } }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "extras",
+      "title_en": "Extras — these add money",
+      "questions": [
+        {
+          "id": "accessories",
+          "type": "multi",
+          "text_en": "What can you hand over with the phone?",
+          "options": [
+            { "id": "box", "label_en": "Original box (matching IMEI)", "deduction": { "type": "flat", "value": -300 } },
+            { "id": "charger", "label_en": "Original charger / cable", "deduction": { "type": "flat", "value": -250 } }
+          ]
+        },
+        {
+          "id": "bill",
+          "type": "single",
+          "text_en": "Do you have the purchase bill?",
+          "options": [
+            { "id": "bill_warranty", "label_en": "Yes, and warranty is still active", "deduction": { "type": "pct", "value": -3 } },
+            { "id": "bill_only", "label_en": "Yes, bill only", "deduction": { "type": "flat", "value": -200 } },
+            { "id": "none", "label_en": "No bill", "deduction": null }
+          ]
+        }
+      ]
+    }
+  ]
+}

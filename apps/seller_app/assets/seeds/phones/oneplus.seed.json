@@ -1,0 +1,147 @@
+{
+  "schema_version": "1.0",
+  "category": "phone",
+  "verified": false,
+  "brand": { "name": "OnePlus", "slug": "oneplus", "sort": 3, "active": true },
+  "models": [
+    {
+      "name": "OnePlus 9",
+      "slug": "oneplus-9",
+      "launch_year": 2021,
+      "series": "Number",
+      "discontinued": true,
+      "aliases": ["LE2111"],
+      "image_ref": "press:oneplus/9",
+      "variant_mode": "fixed",
+      "variants": [
+        { "label": "128GB", "attrs": { "ram_gb": 8, "storage_gb": 128 }, "launch_price_inr": 49999, "base_price_inr": null },
+        { "label": "256GB", "attrs": { "ram_gb": 12, "storage_gb": 256 }, "launch_price_inr": null, "base_price_inr": null }
+      ]
+    },
+    {
+      "name": "OnePlus 9 Pro",
+      "slug": "oneplus-9-pro",
+      "launch_year": 2021,
+      "series": "Number",
+      "discontinued": true,
+      "aliases": ["LE2121"],
+      "image_ref": "press:oneplus/9-pro",
+      "variant_mode": "fixed",
+      "variants": [
+        { "label": "128GB", "attrs": { "ram_gb": 8, "storage_gb": 128 }, "launch_price_inr": 64999, "base_price_inr": null },
+        { "label": "256GB", "attrs": { "ram_gb": 12, "storage_gb": 256 }, "launch_price_inr": 69999, "base_price_inr": null }
+      ]
+    },
+    {
+      "name": "OnePlus 10 Pro",
+      "slug": "oneplus-10-pro",
+      "launch_year": 2022,
+      "series": "Number",
+      "discontinued": true,
+      "aliases": ["NE2211"],
+      "image_ref": "press:oneplus/10-pro",
+      "variant_mode": "fixed",
+      "variants": [
+        { "label": "128GB", "attrs": { "ram_gb": 8, "storage_gb": 128 }, "launch_price_inr": 66999, "base_price_inr": null },
+        { "label": "256GB", "attrs": { "ram_gb": 12, "storage_gb": 256 }, "launch_price_inr": null, "base_price_inr": null }
+      ]
+    },
+    {
+      "name": "OnePlus 10T",
+      "slug": "oneplus-10t",
+      "launch_year": 2022,
+      "series": "Number",
+      "discontinued": true,
+      "aliases": ["CPH2413"],
+      "image_ref": "press:oneplus/10t",
+      "variant_mode": "fixed",
+      "variants": [
+        { "label": "128GB", "attrs": { "ram_gb": 8, "storage_gb": 128 }, "launch_price_inr": 49999, "base_price_inr": null },
+        { "label": "256GB", "attrs": { "ram_gb": 12, "storage_gb": 256 }, "launch_price_inr": null, "base_price_inr": null }
+      ]
+    },
+    {
+      "name": "OnePlus 11",
+      "slug": "oneplus-11",
+      "launch_year": 2023,
+      "series": "Number",
+      "discontinued": false,
+      "aliases": ["CPH2447"],
+      "image_ref": "press:oneplus/11",
+      "variant_mode": "fixed",
+      "variants": [
+        { "label": "128GB", "attrs": { "ram_gb": 8, "storage_gb": 128 }, "launch_price_inr": 56999, "base_price_inr": null },
+        { "label": "256GB", "attrs": { "ram_gb": 16, "storage_gb": 256 }, "launch_price_inr": 61999, "base_price_inr": null }
+      ]
+    },
+    {
+      "name": "OnePlus 11R",
+      "slug": "oneplus-11r",
+      "launch_year": 2023,
+      "series": "Number",
+      "discontinued": false,
+      "aliases": ["CPH2487"],
+      "image_ref": "press:oneplus/11r",
+      "variant_mode": "fixed",
+      "variants": [
+        { "label": "128GB", "attrs": { "ram_gb": 8, "storage_gb": 128 }, "launch_price_inr": 39999, "base_price_inr": null },
+        { "label": "256GB", "attrs": { "ram_gb": 16, "storage_gb": 256 }, "launch_price_inr": 44999, "base_price_inr": null }
+      ]
+    },
+    {
+      "name": "OnePlus 12",
+      "slug": "oneplus-12",
+      "launch_year": 2024,
+      "series": "Number",
+      "discontinued": false,
+      "aliases": ["CPH2573"],
+      "image_ref": "press:oneplus/12",
+      "variant_mode": "fixed",
+      "variants": [
+        { "label": "256GB", "attrs": { "ram_gb": 12, "storage_gb": 256 }, "launch_price_inr": 64999, "base_price_inr": null },
+        { "label": "512GB", "attrs": { "ram_gb": 16, "storage_gb": 512 }, "launch_price_inr": 69999, "base_price_inr": null }
+      ]
+    },
+    {
+      "name": "OnePlus 12R",
+      "slug": "oneplus-12r",
+      "launch_year": 2024,
+      "series": "Number",
+      "discontinued": false,
+      "aliases": ["CPH2585"],
+      "image_ref": "press:oneplus/12r",
+      "variant_mode": "fixed",
+      "variants": [
+        { "label": "128GB", "attrs": { "ram_gb": 8, "storage_gb": 128 }, "launch_price_inr": 39999, "base_price_inr": null },
+        { "label": "256GB", "attrs": { "ram_gb": 16, "storage_gb": 256 }, "launch_price_inr": 45999, "base_price_inr": null }
+      ]
+    },
+    {
+      "name": "Nord 3 5G",
+      "slug": "oneplus-nord-3",
+      "launch_year": 2023,
+      "series": "Nord",
+      "discontinued": false,
+      "aliases": ["CPH2491"],
+      "image_ref": "press:oneplus/nord-3",
+      "variant_mode": "fixed",
+      "variants": [
+        { "label": "128GB", "attrs": { "ram_gb": 8, "storage_gb": 128 }, "launch_price_inr": 33999, "base_price_inr": null },
+        { "label": "256GB", "attrs": { "ram_gb": 16, "storage_gb": 256 }, "launch_price_inr": 37999, "base_price_inr": null }
+      ]
+    },
+    {
+      "name": "Nord CE 3 5G",
+      "slug": "oneplus-nord-ce-3",
+      "launch_year": 2023,
+      "series": "Nord",
+      "discontinued": false,
+      "aliases": ["CPH2569"],
+      "image_ref": "press:oneplus/nord-ce-3",
+      "variant_mode": "fixed",
+      "variants": [
+        { "label": "128GB", "attrs": { "ram_gb": 8, "storage_gb": 128 }, "launch_price_inr": 26999, "base_price_inr": null }
+      ]
+    }
+  ]
+}

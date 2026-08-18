@@ -1,0 +1,75 @@
+{
+  "schema_version": "1.0",
+  "category": "phone",
+  "verified": false,
+  "brand": { "name": "Oppo", "slug": "oppo", "sort": 7, "active": true },
+  "models": [
+    {
+      "name": "Reno 8 5G",
+      "slug": "oppo-reno-8",
+      "launch_year": 2022,
+      "series": "Reno",
+      "discontinued": true,
+      "aliases": ["CPH2359"],
+      "image_ref": "press:oppo/reno-8",
+      "variant_mode": "fixed",
+      "variants": [
+        { "label": "128GB", "attrs": { "ram_gb": 8, "storage_gb": 128 }, "launch_price_inr": 29999, "base_price_inr": null }
+      ]
+    },
+    {
+      "name": "Reno 10 5G",
+      "slug": "oppo-reno-10",
+      "launch_year": 2023,
+      "series": "Reno",
+      "discontinued": false,
+      "aliases": ["CPH2531"],
+      "image_ref": "press:oppo/reno-10",
+      "variant_mode": "fixed",
+      "variants": [
+        { "label": "128GB", "attrs": { "ram_gb": 8, "storage_gb": 128 }, "launch_price_inr": 32999, "base_price_inr": null },
+        { "label": "256GB", "attrs": { "ram_gb": 8, "storage_gb": 256 }, "launch_price_inr": null, "base_price_inr": null }
+      ]
+    },
+    {
+      "name": "Reno 11 5G",
+      "slug": "oppo-reno-11",
+      "launch_year": 2024,
+      "series": "Reno",
+      "discontinued": false,
+      "aliases": ["CPH2599"],
+      "image_ref": "press:oppo/reno-11",
+      "variant_mode": "fixed",
+      "variants": [
+        { "label": "128GB", "attrs": { "ram_gb": 8, "storage_gb": 128 }, "launch_price_inr": 29999, "base_price_inr": null },
+        { "label": "256GB", "attrs": { "ram_gb": 8, "storage_gb": 256 }, "launch_price_inr": null, "base_price_inr": null }
+      ]
+    },
+    {
+      "name": "F23 5G",
+      "slug": "oppo-f23",
+      "launch_year": 2023,
+      "series": "F",
+      "discontinued": false,
+      "aliases": ["CPH2489"],
+      "image_ref": "press:oppo/f23",
+      "variant_mode": "fixed",
+      "variants": [
+        { "label": "128GB", "attrs": { "ram_gb": 8, "storage_gb": 128 }, "launch_price_inr": 24999, "base_price_inr": null }
+      ]
+    },
+    {
+      "name": "A78 5G",
+      "slug": "oppo-a78",
+      "launch_year": 2023,
+      "series": "A",
+      "discontinued": false,
+      "aliases": ["CPH2495"],
+      "image_ref": "press:oppo/a78",
+      "variant_mode": "fixed",
+      "variants": [
+        { "label": "128GB", "attrs": { "ram_gb": 8, "storage_gb": 128 }, "launch_price_inr": 18999, "base_price_inr": null }
+      ]
+    }
+  ]
+}

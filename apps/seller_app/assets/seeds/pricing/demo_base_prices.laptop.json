@@ -1,0 +1,168 @@
+{
+  "schema_version": "1.0",
+  "category": "laptop",
+  "status": "DEMO — stand-in for base_prices + variant_axes modifiers until the admin pricing pass exists. Do not launch with these numbers.",
+  "currency": "INR",
+  "effective_from": "2026-08-16",
+  "set_by": "demo-seed",
+  "note": "base = buyback for the model's base_config; axes map each axis label to an INR modifier added to base.",
+  "prices": {
+    "lenovo-ideapad-slim-3-2023": {
+      "base": 20000,
+      "axes": {
+        "cpu": { "Ryzen 3 7320U": -4000, "Ryzen 5 7520U": 0, "Core i5-1235U": 1500 },
+        "ram_gb": { "8": 0, "16": 2500 },
+        "storage": { "256GB SSD": -1500, "512GB SSD": 0 },
+        "gpu": { "Integrated": 0 }
+      }
+    },
+    "lenovo-thinkpad-t14-gen-3": {
+      "base": 32000,
+      "axes": {
+        "cpu": { "Core i5-1235U": 0, "Core i7-1255U": 3500, "Ryzen 5 PRO 6650U": 1000 },
+        "ram_gb": { "8": -2500, "16": 0, "32": 5000 },
+        "storage": { "256GB SSD": -2000, "512GB SSD": 0, "1TB SSD": 3000 },
+        "gpu": { "Integrated": 0 }
+      }
+    },
+    "lenovo-legion-5-2022": {
+      "base": 52000,
+      "axes": {
+        "cpu": { "Ryzen 5 6600H": -3000, "Ryzen 7 6800H": 0 },
+        "ram_gb": { "16": 0, "32": 4500 },
+        "storage": { "512GB SSD": 0, "1TB SSD": 3000 },
+        "gpu": { "RTX 3050 4GB": -6000, "RTX 3060 6GB": 0, "RTX 3070 Ti 8GB": 8000 }
+      }
+    },
+
+    "apple-macbook-air-m1": {
+      "base": 32000,
+      "axes": {
+        "ram_gb": { "8": 0, "16": 5000 },
+        "storage": { "256GB SSD": 0, "512GB SSD": 4000 }
+      }
+    },
+    "apple-macbook-air-m2": {
+      "base": 47000,
+      "axes": {
+        "ram_gb": { "8": 0, "16": 6000 },
+        "storage": { "256GB SSD": 0, "512GB SSD": 5000 }
+      }
+    },
+    "apple-macbook-air-m3": {
+      "base": 62000,
+      "axes": {
+        "ram_gb": { "8": 0, "16": 6000 },
+        "storage": { "256GB SSD": 0, "512GB SSD": 5000 }
+      }
+    },
+    "apple-macbook-pro-14-m1-pro": {
+      "base": 68000,
+      "axes": {
+        "ram_gb": { "16": 0, "32": 8000 },
+        "storage": { "512GB SSD": 0, "1TB SSD": 6000 }
+      }
+    },
+    "apple-macbook-pro-14-m3": {
+      "base": 88000,
+      "axes": {
+        "ram_gb": { "8": 0, "16": 7000 },
+        "storage": { "512GB SSD": 0, "1TB SSD": 6000 }
+      }
+    },
+
+    "dell-inspiron-15-3520": {
+      "base": 18000,
+      "axes": {
+        "cpu": { "Core i3-1215U": -3000, "Core i5-1235U": 0 },
+        "ram_gb": { "8": 0, "16": 2000 },
+        "storage": { "256GB SSD": -1500, "512GB SSD": 0 }
+      }
+    },
+    "dell-xps-13-9315": {
+      "base": 42000,
+      "axes": {
+        "cpu": { "Core i5-1230U": 0, "Core i7-1250U": 4000 },
+        "ram_gb": { "8": 0, "16": 3000 },
+        "storage": { "256GB SSD": 0, "512GB SSD": 2500 }
+      }
+    },
+    "dell-latitude-3420": {
+      "base": 16000,
+      "axes": {
+        "cpu": { "Core i3-1115G4": -2500, "Core i5-1135G7": 0 },
+        "ram_gb": { "8": 0, "16": 2000 },
+        "storage": { "256GB SSD": -1000, "512GB SSD": 0 }
+      }
+    },
+    "dell-g15-5520": {
+      "base": 42000,
+      "axes": {
+        "cpu": { "Core i5-12500H": 0, "Core i7-12700H": 4000 },
+        "ram_gb": { "8": -2000, "16": 0 },
+        "storage": { "512GB SSD": 0, "1TB SSD": 2500 },
+        "gpu": { "RTX 3050 4GB": 0, "RTX 3060 6GB": 7000 }
+      }
+    },
+
+    "hp-15s-12th-gen": {
+      "base": 17000,
+      "axes": {
+        "cpu": { "Core i3-1215U": -3000, "Core i5-1235U": 0, "Ryzen 5 5625U": -500 },
+        "ram_gb": { "8": 0, "16": 2000 },
+        "storage": { "512GB SSD": 0 }
+      }
+    },
+    "hp-pavilion-15": {
+      "base": 24000,
+      "axes": {
+        "cpu": { "Core i5-1240P": 0, "Core i7-1255U": 3000 },
+        "ram_gb": { "8": -2000, "16": 0 },
+        "storage": { "512GB SSD": 0, "1TB SSD": 2500 }
+      }
+    },
+    "hp-envy-x360-13": {
+      "base": 30000,
+      "axes": {
+        "cpu": { "Core i5-1230U": 0, "Core i7-1250U": 3500 },
+        "ram_gb": { "8": 0, "16": 2500 },
+        "storage": { "512GB SSD": 0, "1TB SSD": 2500 }
+      }
+    },
+    "hp-victus-16": {
+      "base": 38000,
+      "axes": {
+        "cpu": { "Core i5-12450H": 0, "Ryzen 5 6600H": -1000, "Core i7-12700H": 3500 },
+        "ram_gb": { "8": -2000, "16": 0 },
+        "storage": { "512GB SSD": 0, "1TB SSD": 2500 },
+        "gpu": { "GTX 1650 4GB": -5000, "RTX 3050 4GB": 0, "RTX 3060 6GB": 6000 }
+      }
+    },
+
+    "asus-vivobook-15-x1502": {
+      "base": 16000,
+      "axes": {
+        "cpu": { "Core i3-1220P": -2500, "Core i5-1240P": 0 },
+        "ram_gb": { "8": 0, "16": 2000 },
+        "storage": { "512GB SSD": 0 }
+      }
+    },
+    "asus-zenbook-14-oled-ux3402": {
+      "base": 34000,
+      "axes": {
+        "cpu": { "Core i5-1240P": 0, "Core i7-1260P": 3500 },
+        "ram_gb": { "16": 0 },
+        "storage": { "512GB SSD": 0, "1TB SSD": 2500 }
+      }
+    },
+    "asus-tuf-gaming-f15-2022": {
+      "base": 40000,
+      "axes": {
+        "cpu": { "Core i5-12500H": 0, "Core i7-12700H": 3000 },
+        "ram_gb": { "8": -2000, "16": 0 },
+        "storage": { "512GB SSD": 0, "1TB SSD": 2500 },
+        "gpu": { "RTX 3050 4GB": 0, "RTX 3060 6GB": 6000 }
+      }
+    }
+  }
+}

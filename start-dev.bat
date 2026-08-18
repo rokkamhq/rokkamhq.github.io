@@ -13,7 +13,8 @@ if not exist "%ROOT%apps\web\.env.local" (
   echo created apps\web\.env.local
 )
 
-start "Rokkam API" cmd /k "cd /d %ROOT%services\api && %ROOT%.venv\Scripts\python.exe -m uvicorn app.main:app --port 8000"
+rem --host 0.0.0.0 so the seller APK on your phone can reach the API over LAN/hotspot
+start "Rokkam API" cmd /k "cd /d %ROOT%services\api && %ROOT%.venv\Scripts\python.exe -m uvicorn app.main:app --host 0.0.0.0 --port 8000"
 start "Rokkam Web" cmd /k "cd /d %ROOT%apps\web && npm run dev"
 start "Rokkam Admin" cmd /k "cd /d %ROOT%apps\admin && npm run dev"
 

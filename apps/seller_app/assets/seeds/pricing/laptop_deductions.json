@@ -1,0 +1,158 @@
+{
+  "schema_version": "1.0",
+  "category": "laptop",
+  "status": "DEMO values — laptop deduction matrix v1. Values reviewed in admin pricing pass before launch.",
+  "sign_convention": "deduction.value > 0 lowers the price; value < 0 is a bonus. type: pct = % of base price, flat = INR.",
+  "sections": [
+    {
+      "id": "locks",
+      "title_en": "Ownership check",
+      "questions": [
+        {
+          "id": "account_lock",
+          "type": "single",
+          "text_en": "Can you sign out of all accounts and remove passwords (iCloud / Microsoft / BIOS)?",
+          "options": [
+            { "id": "yes", "label_en": "Yes, I can sign out of everything", "deduction": null },
+            { "id": "no", "label_en": "No, it stays locked to an account I can't access", "deduction": null, "kills_deal": true }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "power",
+      "title_en": "Power & boot",
+      "questions": [
+        {
+          "id": "boots",
+          "type": "single",
+          "text_en": "Does the laptop switch on and boot normally?",
+          "options": [
+            { "id": "normal", "label_en": "Yes, boots and runs fine", "deduction": null },
+            { "id": "unstable", "label_en": "Boots, but shuts down / hangs randomly", "deduction": { "type": "pct", "value": 20 } },
+            { "id": "dead", "label_en": "Does not switch on", "deduction": { "type": "pct", "value": 60 } }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "display",
+      "title_en": "Display",
+      "questions": [
+        {
+          "id": "screen",
+          "type": "single",
+          "text_en": "How is the screen?",
+          "options": [
+            { "id": "flawless", "label_en": "Flawless — no marks", "deduction": null },
+            { "id": "minor", "label_en": "Minor scratches, all visible fine", "deduction": { "type": "pct", "value": 4 } },
+            { "id": "spots_lines", "label_en": "Spots, patches or lines", "deduction": { "type": "pct", "value": 18 } },
+            { "id": "cracked", "label_en": "Cracked or broken panel", "deduction": { "type": "pct", "value": 30 } }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "input",
+      "title_en": "Keyboard & trackpad",
+      "questions": [
+        {
+          "id": "keyboard",
+          "type": "single",
+          "text_en": "Keyboard and trackpad working fully?",
+          "options": [
+            { "id": "fine", "label_en": "Yes, everything works", "deduction": null },
+            { "id": "some_keys", "label_en": "Some keys or gestures don't work", "deduction": { "type": "pct", "value": 10 } },
+            { "id": "major", "label_en": "Keyboard or trackpad mostly dead", "deduction": { "type": "pct", "value": 18 } }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "body",
+      "title_en": "Body & hinge",
+      "questions": [
+        {
+          "id": "body_condition",
+          "type": "single",
+          "text_en": "How is the body and hinge?",
+          "options": [
+            { "id": "like_new", "label_en": "Like new", "deduction": null },
+            { "id": "scratches", "label_en": "Light scratches only", "deduction": { "type": "pct", "value": 4 } },
+            { "id": "dents", "label_en": "Dents or cracked panels", "deduction": { "type": "pct", "value": 10 } },
+            { "id": "hinge", "label_en": "Hinge loose or broken", "deduction": { "type": "pct", "value": 18 } }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "internals",
+      "title_en": "Battery, ports & storage",
+      "questions": [
+        {
+          "id": "battery",
+          "type": "single",
+          "text_en": "How is the battery?",
+          "options": [
+            { "id": "good", "label_en": "Holds a good charge (2+ hours of work)", "deduction": null },
+            { "id": "weak", "label_en": "Drains fast / under an hour", "deduction": { "type": "pct", "value": 8 } },
+            { "id": "dead", "label_en": "Only works when plugged in", "deduction": { "type": "pct", "value": 15 } }
+          ]
+        },
+        {
+          "id": "ports",
+          "type": "single",
+          "text_en": "Are all ports (USB, HDMI, jack, charging) working?",
+          "options": [
+            { "id": "fine", "label_en": "Yes, all working", "deduction": null },
+            { "id": "some_dead", "label_en": "Some ports don't work", "deduction": { "type": "pct", "value": 8 } }
+          ]
+        },
+        {
+          "id": "storage_health",
+          "type": "single",
+          "text_en": "Any storage warnings or unusual slowness?",
+          "options": [
+            { "id": "fine", "label_en": "No, runs normally", "deduction": null },
+            { "id": "issues", "label_en": "Disk warnings / very slow / clicking sounds", "deduction": { "type": "pct", "value": 10 } }
+          ]
+        },
+        {
+          "id": "os_license",
+          "type": "single",
+          "text_en": "Is the operating system genuine and activated?",
+          "options": [
+            { "id": "genuine", "label_en": "Yes, activated", "deduction": null },
+            { "id": "not_activated", "label_en": "No / not sure", "deduction": { "type": "flat", "value": 1500 } }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "extras",
+      "title_en": "Charger & bill",
+      "questions": [
+        {
+          "id": "charger",
+          "type": "single",
+          "text_en": "Do you have the charger?",
+          "options": [
+            { "id": "original", "label_en": "Yes, the original charger", "deduction": null },
+            { "id": "third_party", "label_en": "Only a third-party charger", "deduction": { "type": "flat", "value": 500 } },
+            { "id": "none", "label_en": "No charger", "deduction": { "type": "flat", "value": 1500 } }
+          ]
+        },
+        {
+          "id": "bill",
+          "type": "single",
+          "text_en": "Do you have the purchase bill?",
+          "options": [
+            { "id": "bill_warranty", "label_en": "Yes, and warranty is still active", "deduction": { "type": "pct", "value": -3 } },
+            { "id": "bill_only", "label_en": "Yes, bill only", "deduction": { "type": "flat", "value": -300 } },
+            { "id": "none", "label_en": "No bill", "deduction": null }
+          ]
+        }
+      ]
+    }
+  ]
+}

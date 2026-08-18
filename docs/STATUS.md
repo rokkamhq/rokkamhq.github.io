@@ -46,11 +46,20 @@ admin@rokkam.in (password was printed once at creation; if lost, rerun
 
 **Demo prep (2026-08-18):** local stack verified end-to-end (quote → OTP →
 booking → admin queue). Web polish shipped: /sell model search, post-booking
-"what happens next" timeline, quote-code copy + server-lock badge. User is
-recording a demo video against the local stack; **after that: full APK that
-runs on the user's phone with dev settings** (decision: full app, not a quick
-TWA wrapper — phone must reach the dev API over LAN, so NEXT_PUBLIC_API_URL
-and ALLOWED_ORIGINS need the machine's LAN IP).
+"what happens next" timeline, quote-code copy + server-lock badge.
+`start-dev.bat` / `stop-dev.bat` + `LOCAL_DEMO.md` at repo root.
+
+**Seller APK (2026-08-18): `apps/seller_app`** — native Flutter seller app
+(NOT the spec's M3 agent app; that's still apps/agent, unstarted). Fully
+offline-capable: seeds bundled as assets, Dart port of the pricing engine
+(11 mirror tests pinned to the same values as the TS/Python suites), full
+wizard + animated deduction ledger + result screen. When the dev API is
+reachable over LAN it upgrades to server quotes + OTP booking; in-app dev
+settings (gear icon) sets the API URL (default http://192.168.43.125:8000 —
+the PC's hotspot IP). `start-dev.bat` now binds uvicorn to 0.0.0.0; Windows
+Firewall needs an inbound allow on 8000 (command in LOCAL_DEMO.md).
+Release APK signs with debug keys — fine for sideloading, NOT for Play Store.
+Toolchain: Flutter 3.44 at D:\flutter, Android SDK at %LOCALAPPDATA%\Android\Sdk.
 
 Then pick one:
 

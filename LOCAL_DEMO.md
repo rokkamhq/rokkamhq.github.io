@@ -41,11 +41,33 @@ command.
 Dev-mode notes: OTP codes are shown inline on the page (no SMS is sent), and
 the dev DB is SQLite — reseeding is safe (`services/api/scripts/load_seeds.py`).
 
+## Seller APK (demo build, sideload on Android)
+
+Native Flutter app in [`apps/seller_app`](apps/seller_app) — full catalog +
+questionnaire + live deduction ledger, working entirely offline from bundled
+seeds. When the dev API is reachable it upgrades automatically: server-locked
+quotes + OTP booking.
+
+- **Build:** `cd apps\seller_app && D:\flutter\bin\flutter.bat build apk --release`
+- **APK lands at:** `apps\seller_app\build\app\outputs\flutter-apk\app-release.apk`
+- **Install:** copy the APK to the phone (WhatsApp-to-self / USB / `adb install`),
+  allow "install unknown apps" when prompted.
+- **Phone ↔ PC connectivity (for live booking in the app):**
+  1. Phone and PC on the same network (the PC is on the phone's hotspot: perfect).
+  2. `start-dev.bat` now binds the API to `0.0.0.0` — reachable at
+     `http://192.168.43.125:8000` (PC's hotspot IP; re-check with `ipconfig` if it changes).
+  3. Windows Firewall must allow inbound port 8000. One-time (admin PowerShell):
+     `New-NetFirewallRule -DisplayName "Rokkam dev API" -Direction Inbound -LocalPort 8000 -Protocol TCP -Action Allow`
+  4. In the app: gear icon (top-right of home) → API URL → **Save & test**.
+- Without the API the app stays fully demo-able: quotes compute on-device,
+  booking falls back to WhatsApp. Airplane-mode-proof.
+
 ## Tests (all should be green)
 
 ```powershell
 .\.venv\Scripts\python.exe -m pytest packages/pricing/tests services/api/tests   # 48 tests
 cd apps\web && npm test && npm run lint                                          # engine mirror + lint
+cd apps\seller_app && D:\flutter\bin\flutter.bat test                            # Dart engine mirror (11 tests)
 ```
 
 ## More docs
