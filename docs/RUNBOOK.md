@@ -25,6 +25,31 @@ Run the three processes:
 SMS — the booking widget shows the code inline. Set `DEV_MODE=0` once MSG91 is
 wired up.
 
+## Seller APK (apps/seller_app — demo build)
+
+Toolchain on this machine: Flutter 3.44 at `D:\flutter`, Android SDK at
+`%LOCALAPPDATA%\Android\Sdk`.
+
+```powershell
+cd apps\seller_app
+D:\flutter\bin\flutter.bat test                 # 11 engine-mirror tests
+D:\flutter\bin\flutter.bat build apk --release  # -> build\app\outputs\flutter-apk\app-release.apk
+```
+
+Sideload the APK on any Android phone (no Play Store). For live booking from
+the phone: run `start-dev.bat` (binds the API to 0.0.0.0), allow inbound port
+8000 in Windows Firewall (one-time, admin PowerShell):
+
+```powershell
+New-NetFirewallRule -DisplayName "Rokkam dev API" -Direction Inbound -LocalPort 8000 -Protocol TCP -Action Allow
+```
+
+then set the API URL in the app's dev settings (gear icon on home) to
+`http://<PC-LAN-IP>:8000` — `ipconfig` shows the IP; it changes when the
+hotspot/network changes. Details + install steps: `LOCAL_DEMO.md`.
+See `apps/seller_app/README.md` for build caveats (kotlin.incremental,
+debug-key signing, seed copies).
+
 ## Docker (Postgres 16, VPS-shaped)
 
 ```bash
@@ -40,7 +65,11 @@ docker compose exec api python scripts/create_admin.py admin@rokkam.in "Your Nam
 ```powershell
 .\.venv\Scripts\python.exe -m pytest packages/pricing/tests services/api/tests   # engine + API
 cd apps\web; npm test                                                            # TS engine mirror
+cd apps\seller_app; D:\flutter\bin\flutter.bat test                              # Dart engine mirror
 ```
+
+The three engine implementations (Python, TS, Dart) are pinned to the same
+rupee values by their test suites — an engine change must land in all three.
 
 CI runs all three on every push (`.github/workflows/`).
 

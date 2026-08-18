@@ -48,8 +48,9 @@ questionnaire + live deduction ledger, working entirely offline from bundled
 seeds. When the dev API is reachable it upgrades automatically: server-locked
 quotes + OTP booking.
 
-- **Build:** `cd apps\seller_app && D:\flutter\bin\flutter.bat build apk --release`
-- **APK lands at:** `apps\seller_app\build\app\outputs\flutter-apk\app-release.apk`
+- **Ready-built APK:** `rokkam-seller-demo.apk` at the repo root (gitignored copy)
+- **Rebuild:** `cd apps\seller_app && D:\flutter\bin\flutter.bat build apk --release`
+  → `apps\seller_app\build\app\outputs\flutter-apk\app-release.apk`
 - **Install:** copy the APK to the phone (WhatsApp-to-self / USB / `adb install`),
   allow "install unknown apps" when prompted.
 - **Phone ↔ PC connectivity (for live booking in the app):**

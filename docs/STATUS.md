@@ -13,10 +13,11 @@ auto-tests and auto-deploys via GitHub Actions. WhatsApp CTA wired to
 brands, 73 priced models) · M2 ✅ (server quotes, OTP auth, booking, admin
 dashboard — runs locally only; see below) · M3+ not started.
 
-**Test suites (all green in CI):**
-- `packages/pricing/tests` — 32 Python engine tests
-- `services/api/tests` — 16 API tests (quotes, OTP, booking, admin, audit, loader idempotency)
-- `apps/web` `npm test` — 12 TS engine-mirror tests
+**Test suites (all green):**
+- `packages/pricing/tests` — 32 Python engine tests (CI)
+- `services/api/tests` — 16 API tests (quotes, OTP, booking, admin, audit, loader idempotency) (CI)
+- `apps/web` `npm test` — 12 TS engine-mirror tests (CI)
+- `apps/seller_app` `flutter test` — 11 Dart engine-mirror tests (local only; no Flutter in CI)
 
 ## How to resume local dev
 
@@ -42,24 +43,44 @@ admin@rokkam.in (password was printed once at creation; if lost, rerun
 - All catalog seeds are `"verified": false` (GSMArena/spec-archive verification pass pending)
 - Copy is EN-only with i18n keys; TE/UR translation is a dedicated task
 
+## Session log — 2026-08-18 (demo prep + seller APK)
+
+- Local stack verified end-to-end (quote → OTP → booking → admin queue).
+  Web polish shipped: /sell model search, post-booking "what happens next"
+  timeline, quote-code copy + server-lock badge.
+- `start-dev.bat` / `stop-dev.bat` + `LOCAL_DEMO.md` at repo root. Admin
+  password reset (stored locally in gitignored `ADMIN_CREDENTIALS.txt`).
+- **Seller APK: `apps/seller_app`** — native Flutter seller app (NOT the
+  spec's M3 agent app; that's still apps/agent, unstarted). Offline-first:
+  seeds bundled as assets, Dart port of the pricing engine (11 mirror tests
+  pinned to the same values as the TS/Python suites), full wizard + animated
+  deduction ledger + result screen. When the dev API is reachable over LAN it
+  upgrades to server quotes + OTP booking; in-app dev settings (gear icon)
+  sets the API URL (default http://192.168.43.125:8000 — the PC's hotspot IP;
+  changes with the network). Release APK signs with debug keys — sideload
+  only, NOT Play Store. Built APK copied to repo root as
+  `rokkam-seller-demo.apk` (gitignored). Build details:
+  `apps/seller_app/README.md`; install/connectivity: `LOCAL_DEMO.md`.
+- User still to do: record the web demo video; run the firewall allow rule
+  for port 8000 (admin PowerShell, command in LOCAL_DEMO.md / RUNBOOK.md).
+
 ## Next up
 
-**Demo prep (2026-08-18):** local stack verified end-to-end (quote → OTP →
-booking → admin queue). Web polish shipped: /sell model search, post-booking
-"what happens next" timeline, quote-code copy + server-lock badge.
-`start-dev.bat` / `stop-dev.bat` + `LOCAL_DEMO.md` at repo root.
+**NEXT SESSION (user-committed): test the seller APK step by step on the
+user's phone.** Not yet installed or run on a real device. Test plan:
 
-**Seller APK (2026-08-18): `apps/seller_app`** — native Flutter seller app
-(NOT the spec's M3 agent app; that's still apps/agent, unstarted). Fully
-offline-capable: seeds bundled as assets, Dart port of the pricing engine
-(11 mirror tests pinned to the same values as the TS/Python suites), full
-wizard + animated deduction ledger + result screen. When the dev API is
-reachable over LAN it upgrades to server quotes + OTP booking; in-app dev
-settings (gear icon) sets the API URL (default http://192.168.43.125:8000 —
-the PC's hotspot IP). `start-dev.bat` now binds uvicorn to 0.0.0.0; Windows
-Firewall needs an inbound allow on 8000 (command in LOCAL_DEMO.md).
-Release APK signs with debug keys — fine for sideloading, NOT for Play Store.
-Toolchain: Flutter 3.44 at D:\flutter, Android SDK at %LOCALAPPDATA%\Android\Sdk.
+1. Install `rokkam-seller-demo.apk` on the phone (sideload; or `adb install`
+   over USB — adb is at `%LOCALAPPDATA%\Android\Sdk\platform-tools`).
+2. **Offline pass** (airplane mode): home renders (fonts, palette, hero
+   receipt animation) → search "iPhone 13" → wizard → ledger animates per
+   answer → kills_deal decline screen (pick "clone") → result screen shows
+   demo quote code + WhatsApp booking CTA → laptop composed-config flow.
+3. **LAN pass**: start-dev.bat running, firewall rule added, phone on same
+   hotspot → gear icon → Save & test shows "API reachable" → result screen
+   shows "Locked on Rokkam servers" badge → full OTP booking (dev code shown
+   inline) → order appears in admin queue on :3001.
+4. Fix whatever the device reveals (density/spacing/animation issues),
+   rebuild, re-test, bump version.
 
 Then pick one:
 
